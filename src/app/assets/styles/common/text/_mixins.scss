@@ -1,0 +1,18 @@
+@mixin font-styles($font-size, $font-style, $font-weight, $line-height) {
+  font-size: $font-size;
+  font-style: $font-style;
+  font-weight: $font-weight;
+  line-height: $line-height;
+}
+
+@mixin heading() {
+  @include font-styles(32px, normal, 500, 38px);
+}
+
+@mixin subtitle() {
+  @include font-styles(20px, normal, 500, 24px);
+}
+
+@mixin regular() {
+  @include font-styles(16, normal, 400, 20px);
+}

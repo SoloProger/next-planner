@@ -1,0 +1,21 @@
+<form [formGroup]="signInForm" class="bg-light wp-600 p-35 border-radius-6">
+  <h1 class="header text-center mb-35">Авторизоваться</h1>
+  <div appFlex direction="column" [gap]="40" extraStyles="mb-40">
+    <app-input
+      formControlName="email"
+      placeholder="Email"
+      type="email"
+    ></app-input>
+    <app-input
+      formControlName="password"
+      placeholder="Пароль"
+      type="password"
+    ></app-input>
+  </div>
+  <app-login></app-login>
+  <hr class="border-gray-i border-1 m-y-25" />
+  <div appFlex justifyContent="center" [gap]="5">
+    <p>Нет аккуанта?</p>
+    <span class="text-primary pointer">Зарегистрируйтесь </span>
+  </div>
+</form>

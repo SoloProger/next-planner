@@ -1,0 +1,47 @@
+@for $count from 0 through 100 {
+  .w-#{$count} {
+    width: 1% * $count;
+  }
+
+  .h-#{$count} {
+    height: 1% * $count;
+  }
+
+  .wi-#{$count} {
+    width: 1% * $count !important;
+  }
+
+  .w-vw-#{$count} {
+    width: 1vw * $count;
+  }
+
+  .h-vh-#{$count} {
+    height: 1vh * $count;
+  }
+}
+
+@for $count from 0 through 1000 {
+  .wp-#{$count} {
+    width: 1px * $count;
+  }
+
+  .max-wp-#{$count} {
+    max-width: 1px * $count;
+  }
+
+  .min-wp-#{$count} {
+    min-width: 1px * $count;
+  }
+
+  .hp-#{$count} {
+    height: 1px * $count;
+  }
+
+  .min-hp-#{$count} {
+    min-height: 1px * $count;
+  }
+}
+
+.max-w-content-min {
+  max-width: min-content;
+}

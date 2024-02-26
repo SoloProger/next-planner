@@ -1,0 +1,39 @@
+@for $count from 1 through 10 {
+  .border-top-#{$count} {
+    border-top: 1px * $count solid;
+  }
+
+  .border-right-#{$count} {
+    border-right: 1px * $count solid;
+  }
+
+  .border-left-#{$count} {
+    border-left: 1px * $count solid;
+  }
+
+  .border-bottom-#{$count} {
+    border-bottom: 1px * $count solid;
+  }
+
+  .border-#{$count} {
+    border: 1px * $count solid;
+  }
+}
+
+@for $count from 0 through 200 {
+  .border-radius-#{$count} {
+    border-radius: 1px * $count;
+
+    &-i {
+      border-radius: 1px * $count !important;
+    }
+  }
+}
+
+.border-circle {
+  border-radius: 50%;
+}
+
+.border-none {
+  border: none;
+}

@@ -1,0 +1,37 @@
+@import "_mixins.scss";
+
+.header {
+  @include heading();
+}
+
+.subtitle {
+  @include subtitle();
+}
+
+.regular {
+  @include regular();
+}
+
+.text-decor-none {
+  text-decoration: none;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-start {
+  text-align: start;
+}
+
+.text-start-i {
+  text-align: start !important;
+}
+
+.text-end {
+  text-align: end;
+}

@@ -1,0 +1,7 @@
+.border-gray {
+  border-color: $gray;
+
+  &-i {
+    border-color: rgba($gray, 0.3) !important;
+  }
+}
