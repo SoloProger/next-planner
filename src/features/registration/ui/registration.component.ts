@@ -1,10 +1,9 @@
-import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
-  selector: 'app-login',
-  template: `<p-button label="Войти"></p-button>`,
+  selector: 'app-registration',
+  template: `<p-button label="Зарегистрироваться"></p-button>`,
   styles: [
     `
       :host ::ng-deep {
@@ -16,6 +15,6 @@ import { ButtonModule } from 'primeng/button';
     `,
   ],
   standalone: true,
-  imports: [CommonModule, ButtonModule],
+  imports: [ButtonModule],
 })
-export class LoginComponent {}
+export class RegistrationComponent {}

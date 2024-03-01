@@ -1,6 +1,12 @@
-<form [formGroup]="signInForm" class="bg-light wp-600 p-35 border-radius-6">
-  <h1 class="header text-center mb-35">Авторизоваться</h1>
+<form [formGroup]="signUpForm" class="bg-light wp-600 p-35 border-radius-6">
+  <h1 class="header text-center mb-35">Регистрация</h1>
   <div appFlex direction="column" [gap]="40" extraStyles="mb-40">
+    <input
+      pInputText
+      class="p-18 subtitle"
+      formControlName="userName"
+      placeholder="Имя"
+    />
     <input
       pInputText
       class="p-18 subtitle"
@@ -16,11 +22,11 @@
       type="password"
     />
   </div>
-  <app-login></app-login>
+  <app-registration></app-registration>
   <hr class="border-gray-i border-1 m-y-25" />
   <app-auth-redirect-link
-    label="Нет аккуанта?"
-    linkLabel="Зарегистрироваться"
-    navigateLink="auth/sign-up"
+    label="Уже есть аккаунт?"
+    linkLabel="Войти"
+    navigateLink="auth/sign-in"
   ></app-auth-redirect-link>
 </form>
