@@ -6,7 +6,7 @@ import { AccountComponent } from './widgets/account.component';
 @Component({
   selector: 'app-navbar',
   template: `
-    <nav appFlex justifyContent="space" extraStyles="bg-prime p-24 fixed w-100">
+    <nav appFlex justifyContent="space" extraStyles="bg-prime p-24">
       <div appFlex [gap]="8">
         <span class="regular text-bold">Дата:</span>
         <span class="regular text-bold">{{ today }}</span>
