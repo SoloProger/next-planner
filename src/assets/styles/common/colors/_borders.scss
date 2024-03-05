@@ -5,3 +5,11 @@
     border-color: rgba($gray, 0.3) !important;
   }
 }
+
+.border-transparent {
+  border-color: transparent;
+
+  &-i {
+    border-color: transparent !important;
+  }
+}

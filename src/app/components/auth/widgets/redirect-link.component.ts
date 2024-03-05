@@ -6,11 +6,9 @@ import { AuthRedirectStore } from '../store/redirect.store';
   template: `
     <div appFlex justifyContent="center" class="regular" [gap]="5">
       <p>{{ label }}</p>
-      <p-button
-        [label]="linkLabel"
-        [link]="true"
-        (onClick)="redirectStore.redirect()"
-      ></p-button>
+      <span class="text-primary pointer" (click)="redirectStore.redirect()">{{
+        linkLabel
+      }}</span>
     </div>
   `,
 })

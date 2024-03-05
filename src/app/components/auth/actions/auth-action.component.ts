@@ -1,17 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-auth-action',
-  template: `<p-button label="Войти"></p-button>`,
-  styles: [
-    `
-      :host ::ng-deep {
-        .p-button {
-          width: 100%;
-          padding: 18px;
-        }
-      }
-    `,
-  ],
+  template: `<p-button [label]="label"></p-button>`,
+  styleUrl: './auth-action.component.scss',
 })
-export class AuthActionComponent {}
+export class AuthActionComponent {
+  @Input() public label!: string;
+}

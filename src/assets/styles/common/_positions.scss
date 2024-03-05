@@ -6,6 +6,10 @@
   position: absolute;
 }
 
+.fixed {
+  position: fixed;
+}
+
 @for $count from 0 through 1000 {
   .t-#{$count} {
     top: 1px * $count;
