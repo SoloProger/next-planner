@@ -1,9 +1,10 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { Navbar } from "../shared/ui";
 
 function App() {
   return (
     <ChakraProvider>
-      <div>Hello</div>
+      <Navbar />
     </ChakraProvider>
   );
 }
