@@ -1,0 +1,61 @@
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+@for $count from 0 through 1000 {
+  .t-#{$count} {
+    top: 1px * $count;
+
+    &-p {
+      top: 1% * $count;
+    }
+  }
+
+  .b-#{$count} {
+    bottom: 1px * $count;
+
+    &-p {
+      bottom: 1% * $count;
+    }
+  }
+
+  .l-#{$count} {
+    left: 1px * $count;
+
+    &-p {
+      left: 1% * $count;
+    }
+  }
+
+  .r-#{$count} {
+    right: 1px * $count;
+
+    &-p {
+      right: 1% * $count;
+    }
+  }
+
+  .t--#{$count} {
+    top: -1px * $count;
+  }
+}
+
+.t-0 {
+  top: 0;
+}
+
+.r-0 {
+  right: 0;
+}
+
+.z-index {
+  z-index: 1;
+
+  &-0 {
+    z-index: -1;
+  }
+}
