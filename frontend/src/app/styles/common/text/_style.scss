@@ -1,4 +1,4 @@
-@import '_mixins.scss';
+@import "_mixins.scss";
 
 .header-1 {
   @include heading-1();
@@ -22,6 +22,10 @@
 
 .header-semibold-6 {
   @include heading-6-semibold();
+}
+
+.header-semibold-7 {
+  @include heading-7-semibold();
 }
 
 .subtitle-1 {

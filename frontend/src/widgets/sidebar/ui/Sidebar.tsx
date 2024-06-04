@@ -1,5 +1,6 @@
 import { List, ListItem } from "@chakra-ui/react";
-import { sidebarLinks } from "../constants/sidebar-links";
+import { Link } from "react-router-dom";
+import { sidebarLinks } from "../constants/sidebarLinks";
 
 type SidebarOpenType = { isOpen: boolean };
 
@@ -9,8 +10,10 @@ function Sidebar({ isOpen }: SidebarOpenType) {
       className={`wp-250 p-20 h-vh-100 shadow ${!isOpen && "display-none"}`}
     >
       <List spacing={10}>
-        {sidebarLinks.map((sidebarLink) => (
-          <ListItem className="pointer">{sidebarLink.name}</ListItem>
+        {sidebarLinks.map((sidebarLink, idx) => (
+          <ListItem key={idx} className="pointer">
+            <Link to={sidebarLink.path}>{sidebarLink.name}</Link>
+          </ListItem>
         ))}
       </List>
     </aside>

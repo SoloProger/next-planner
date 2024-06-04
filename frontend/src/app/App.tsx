@@ -1,5 +1,6 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { useState } from "react";
+import { Outlet } from "react-router-dom";
 import { Navbar } from "../widgets/navbar";
 import { Sidebar } from "../widgets/sidebar";
 
@@ -11,7 +12,7 @@ function App() {
       <Navbar openSidebar={() => setOpenSidebar(!isOpenSidebar)} />
       <main className="flex gap-24">
         <Sidebar isOpen={isOpenSidebar} />
-        <section></section>
+        <Outlet />
       </main>
     </ChakraProvider>
   );
