@@ -3,7 +3,7 @@ import { tempInvoices } from "../constants/tempInvoices";
 
 function InvoicesGrid() {
   return (
-    <section className="p-24 flex gap-18 w-100">
+    <section className="flex gap-18 w-100">
       {tempInvoices.map((invoice, idx) => (
         <InvoiceCard
           key={idx}
