@@ -9,10 +9,15 @@ function Sidebar({ isOpen }: SidebarOpenType) {
     <aside
       className={`wp-250 p-20 h-vh-100 shadow ${!isOpen && "display-none"}`}
     >
-      <List spacing={10}>
+      <List spacing={10} className="flex-col">
         {sidebarLinks.map((sidebarLink, idx) => (
-          <ListItem key={idx} className="pointer">
-            <Link to={sidebarLink.path}>{sidebarLink.name}</Link>
+          <ListItem
+            key={idx}
+            className="pointer"
+            as={Link}
+            to={sidebarLink.path}
+          >
+            {sidebarLink.name}
           </ListItem>
         ))}
       </List>

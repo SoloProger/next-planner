@@ -1,6 +1,7 @@
 import { Menu, MenuButton, MenuItem, MenuList } from "@chakra-ui/react";
 import { useState } from "react";
 import { FaAlignJustify, FaAngleDown, FaAngleUp } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 import { CustomDate } from "../../../shared/lib/utils";
 
 type NavbarMethod = { openSidebar: () => void };
@@ -22,7 +23,9 @@ function Navbar({ openSidebar }: NavbarMethod) {
           </span>
         </MenuButton>
         <MenuList>
-          <MenuItem>Профиль</MenuItem>
+          <MenuItem as={Link} to="profile">
+            Профиль
+          </MenuItem>
           <MenuItem>Выйти</MenuItem>
         </MenuList>
       </Menu>
