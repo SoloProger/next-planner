@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import CategoriesPage from "../pages/CategoriesPage";
 import DetailRecordPage from "../pages/DetailRecordPage";
 import HistoryPage from "../pages/HistoryPage";
 import InvoicePage from "../pages/InvoicePage";
@@ -21,6 +22,7 @@ const router = createBrowserRouter([
       { path: "profile", element: <ProfilePage /> },
 
       { path: "planning", element: <PlanningPage /> },
+      { path: "categories", element: <CategoriesPage /> },
     ],
   },
 ]);
