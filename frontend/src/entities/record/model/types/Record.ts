@@ -6,5 +6,6 @@ export interface Record {
   date: string;
   count: number;
   category: string;
+  description: string;
   recordType: RecordType;
 }
