@@ -2,6 +2,7 @@ import { createBrowserRouter, Navigate } from "react-router-dom";
 import DetailRecordPage from "../pages/DetailRecordPage";
 import HistoryPage from "../pages/HistoryPage";
 import InvoicePage from "../pages/InvoicePage";
+import PlanningPage from "../pages/PlanningPage";
 import ProfilePage from "../pages/ProfilePage";
 import App from "./App";
 
@@ -18,6 +19,8 @@ const router = createBrowserRouter([
       },
       { path: "detail-record/:id", element: <DetailRecordPage /> },
       { path: "profile", element: <ProfilePage /> },
+
+      { path: "planning", element: <PlanningPage /> },
     ],
   },
 ]);
