@@ -8,6 +8,18 @@
   box-sizing: border-box;
 }
 
+body {
+  overflow: hidden;
+}
+
 .pointer {
   cursor: pointer;
+}
+
+.opacity {
+  opacity: 1;
+}
+
+.opacity-none {
+  opacity: 0;
 }
