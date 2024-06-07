@@ -1,0 +1,48 @@
+{
+  "kind": "collectionType",
+  "collectionName": "invoices",
+  "info": {
+    "singularName": "invoice",
+    "pluralName": "invoices",
+    "displayName": "Invoice"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "invoiceNumber": {
+      "type": "biginteger",
+      "required": true,
+      "unique": true
+    },
+    "currency": {
+      "type": "enumeration",
+      "enum": [
+        "DOLLAR",
+        "RUBLE",
+        "EURO"
+      ],
+      "default": "RUBLE",
+      "required": true
+    },
+    "invoiceType": {
+      "type": "enumeration",
+      "enum": [
+        "SAVINGS",
+        "MAIN",
+        "INVEST"
+      ],
+      "default": "MAIN",
+      "required": true
+    },
+    "invoiceCount": {
+      "type": "decimal",
+      "default": 0,
+      "required": true
+    }
+  }
+}
