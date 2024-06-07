@@ -677,6 +677,158 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiCategoryCategory extends Schema.CollectionType {
+  collectionName: 'categories';
+  info: {
+    singularName: 'category';
+    pluralName: 'categories';
+    displayName: 'Category';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    description: Attribute.Text;
+    records: Attribute.Relation<
+      'api::category.category',
+      'oneToMany',
+      'api::record.record'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::category.category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiGoalGoal extends Schema.CollectionType {
+  collectionName: 'goals';
+  info: {
+    singularName: 'goal';
+    pluralName: 'goals';
+    displayName: 'Goal';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    description: Attribute.Text;
+    currentAmount: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.DefaultTo<0>;
+    totalAmount: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.DefaultTo<0>;
+    invoice: Attribute.Relation<
+      'api::goal.goal',
+      'oneToOne',
+      'api::invoice.invoice'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::goal.goal', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::goal.goal', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiInvoiceInvoice extends Schema.CollectionType {
+  collectionName: 'invoices';
+  info: {
+    singularName: 'invoice';
+    pluralName: 'invoices';
+    displayName: 'Invoice';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    invoiceNumber: Attribute.BigInteger & Attribute.Required & Attribute.Unique;
+    currency: Attribute.Enumeration<['DOLLAR', 'RUBLE', 'EURO']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'RUBLE'>;
+    invoiceType: Attribute.Enumeration<['SAVINGS', 'MAIN', 'INVEST']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'MAIN'>;
+    invoiceCount: Attribute.Decimal &
+      Attribute.Required &
+      Attribute.DefaultTo<0>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::invoice.invoice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::invoice.invoice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiRecordRecord extends Schema.CollectionType {
+  collectionName: 'records';
+  info: {
+    singularName: 'record';
+    pluralName: 'records';
+    displayName: 'Record';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    date: Attribute.Date;
+    count: Attribute.Decimal & Attribute.Required;
+    description: Attribute.Text;
+    recordType: Attribute.Enumeration<['INCOME', 'CONSUMPTION']> &
+      Attribute.Required &
+      Attribute.DefaultTo<'CONSUMPTION'>;
+    category: Attribute.Relation<
+      'api::record.record',
+      'manyToOne',
+      'api::category.category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::record.record',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::record.record',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -693,6 +845,10 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::category.category': ApiCategoryCategory;
+      'api::goal.goal': ApiGoalGoal;
+      'api::invoice.invoice': ApiInvoiceInvoice;
+      'api::record.record': ApiRecordRecord;
     }
   }
 }
