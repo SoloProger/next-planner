@@ -1,4 +1,13 @@
-import { ChakraProvider } from "@chakra-ui/react";
+import {
+  ChakraProvider,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalHeader,
+  ModalOverlay,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { useState } from "react";
 import {
   FaChartSimple,
@@ -8,6 +17,7 @@ import {
   FaPlus,
 } from "react-icons/fa6";
 import { Outlet } from "react-router-dom";
+import { AddInvoiceForm } from "../features/add-invoice";
 import { Navbar } from "../widgets/navbar";
 import { Sidebar } from "../widgets/sidebar";
 import CustomQueryClientProvider from "./providers/CustomQueryClientProvider";
@@ -15,6 +25,7 @@ import CustomQueryClientProvider from "./providers/CustomQueryClientProvider";
 function App() {
   const [isOpenSidebar, setOpenSidebar] = useState(true);
   const [isShow, setShow] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <CustomQueryClientProvider>
@@ -56,11 +67,23 @@ function App() {
               className={`trans-1  absolute b-220 r-85 bg-orange p-16 border-circle pointer ${
                 isShow ? "opacity" : "opacity-none"
               }`}
+              onClick={onOpen}
             >
               <FaCreditCard />
             </div>
           </>
         </main>
+
+        <Modal isOpen={isOpen} onClose={onClose} isCentered>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Modal Title</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              <AddInvoiceForm></AddInvoiceForm>
+            </ModalBody>
+          </ModalContent>
+        </Modal>
       </ChakraProvider>
     </CustomQueryClientProvider>
   );

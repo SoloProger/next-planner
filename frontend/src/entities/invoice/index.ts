@@ -1,5 +1,6 @@
+import { useInvoiceStore } from "./model/store/invoiceStore";
 import type { Invoice } from "./model/types/Invoice";
 import { InvoiceType } from "./model/types/InvoiceType";
 import InvoiceCard from "./ui/InvoiceCard";
 
-export { Invoice, InvoiceCard, InvoiceType };
+export { Invoice, InvoiceCard, InvoiceType, useInvoiceStore };
