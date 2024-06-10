@@ -7,7 +7,6 @@ import {
   NumberInputField,
 } from "@chakra-ui/react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { Goal } from "../../../entities/goal";
 import { Invoice } from "../../../entities/invoice";
@@ -26,8 +25,6 @@ interface GoalFormProps {
 function AddGoalForm({ close }: GoalFormProps) {
   const queryClient = useQueryClient();
 
-  const [invoiceId, setInvoiceId] = useState<number>();
-
   const { control, handleSubmit } = useForm<Goal>({
     defaultValues: {
       name: "",
@@ -39,7 +36,6 @@ function AddGoalForm({ close }: GoalFormProps) {
 
   const mutationInvoice = useMutation({
     mutationFn: (data: EntityRequest<Invoice>) => addInvoice(data),
-    onSuccess: async (data) => setInvoiceId(data.data.id),
   });
 
   const mutationGoal = useMutation({
@@ -59,24 +55,29 @@ function AddGoalForm({ close }: GoalFormProps) {
     },
   });
 
-  const onSubmit = (data: Goal) => {
-    mutationInvoice.mutate({
-      data: {
-        name: data.name,
-        currency: CurrencyEnumType.RUBLE,
-        invoiceType: InvoiceTypeEnum.MAIN,
-        invoiceCount: data.totalAmount,
-        invoiceNumber: invoiceNumberGenerate(),
+  const onSubmit = (formData: Goal) => {
+    mutationInvoice.mutate(
+      {
+        data: {
+          name: formData.name,
+          currency: CurrencyEnumType.RUBLE,
+          invoiceType: InvoiceTypeEnum.MAIN,
+          invoiceCount: formData.currentAmount,
+          invoiceNumber: invoiceNumberGenerate(),
+        },
       },
-    });
+      {
+        onSuccess: (data) => {
+          if (data.data.id) {
+            mutationGoal.mutate({
+              data: { ...formData, invoice: { set: [data.data.id] } },
+            });
 
-    if (invoiceId) {
-      mutationGoal.mutate({
-        data: { ...data, invoice: { set: [invoiceId] } },
-      });
-    }
-
-    close();
+            close();
+          }
+        },
+      }
+    );
   };
 
   return (
