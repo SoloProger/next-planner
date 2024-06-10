@@ -25,7 +25,17 @@ import CustomQueryClientProvider from "./providers/CustomQueryClientProvider";
 function App() {
   const [isOpenSidebar, setOpenSidebar] = useState(true);
   const [isShow, setShow] = useState(false);
+  const [form, setForm] = useState("");
   const { isOpen, onOpen, onClose } = useDisclosure();
+
+  const forms: { [key: string]: any } = {
+    invoiceForm: AddInvoiceForm,
+  };
+
+  function renderForm(): JSX.Element {
+    const Form = forms[form];
+    return <Form close={onClose}></Form>;
+  }
 
   return (
     <CustomQueryClientProvider>
@@ -67,7 +77,10 @@ function App() {
               className={`trans-1  absolute b-220 r-85 bg-orange p-16 border-circle pointer ${
                 isShow ? "opacity" : "opacity-none"
               }`}
-              onClick={onOpen}
+              onClick={() => {
+                onOpen();
+                setForm("invoiceForm");
+              }}
             >
               <FaCreditCard />
             </div>
@@ -79,9 +92,7 @@ function App() {
           <ModalContent>
             <ModalHeader>Modal Title</ModalHeader>
             <ModalCloseButton />
-            <ModalBody>
-              <AddInvoiceForm close={onClose}></AddInvoiceForm>
-            </ModalBody>
+            <ModalBody>{renderForm()}</ModalBody>
           </ModalContent>
         </Modal>
       </ChakraProvider>
