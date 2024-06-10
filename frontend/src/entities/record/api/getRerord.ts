@@ -1,11 +1,11 @@
 import axios from "axios";
 import { API_URL } from "../../../shared/constants/apiUrl";
-import { EntityDataModel } from "../../../shared/model/types/EntityDataModel";
+import { EntityResponse } from "../../../shared/model/types/EntityResponse";
 import { Record } from "../model/types/Record";
 
-export async function getRecord(id: number): Promise<EntityDataModel<Record>> {
-  const records = await axios.get<EntityDataModel<Record>>(
-    `${API_URL}/records/${id}`,
+export async function getRecord(id?: string): Promise<EntityResponse<Record>> {
+  const records = await axios.get<EntityResponse<Record>>(
+    `${API_URL}/records/${+(id as string)}`,
     {
       headers: {
         Authorization:
