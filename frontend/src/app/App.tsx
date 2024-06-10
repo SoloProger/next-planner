@@ -17,6 +17,7 @@ import {
   FaPlus,
 } from "react-icons/fa6";
 import { Outlet } from "react-router-dom";
+import AddGoalForm from "../features/add-goal/ui/AddGoalForm";
 import { AddInvoiceForm } from "../features/add-invoice";
 import { Navbar } from "../widgets/navbar";
 import { Sidebar } from "../widgets/sidebar";
@@ -30,6 +31,7 @@ function App() {
 
   const forms: { [key: string]: any } = {
     invoiceForm: AddInvoiceForm,
+    goalForm: AddGoalForm,
   };
 
   function renderForm(): JSX.Element {
@@ -56,6 +58,10 @@ function App() {
               className={`trans-1 absolute b-90 r-135 bg-orange p-16 border-circle pointer ${
                 isShow ? "opacity" : "opacity-none"
               }`}
+              onClick={() => {
+                onOpen();
+                setForm("goalForm");
+              }}
             >
               <FaList />
             </div>
