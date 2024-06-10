@@ -96,7 +96,7 @@ function App() {
         <Modal isOpen={isOpen} onClose={onClose} isCentered>
           <ModalOverlay />
           <ModalContent>
-            <ModalHeader>Modal Title</ModalHeader>
+            <ModalHeader>Добавить</ModalHeader>
             <ModalCloseButton />
             <ModalBody>{renderForm()}</ModalBody>
           </ModalContent>
