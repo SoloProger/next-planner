@@ -80,7 +80,7 @@ function App() {
             <ModalHeader>Modal Title</ModalHeader>
             <ModalCloseButton />
             <ModalBody>
-              <AddInvoiceForm></AddInvoiceForm>
+              <AddInvoiceForm close={onClose}></AddInvoiceForm>
             </ModalBody>
           </ModalContent>
         </Modal>

@@ -7,23 +7,26 @@ import {
   NumberInputField,
   Select,
 } from "@chakra-ui/react";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Controller, useForm } from "react-hook-form";
-import {
-  Invoice,
-  InvoiceType,
-  useInvoiceStore,
-} from "../../../entities/invoice";
+import { Invoice, InvoiceType } from "../../../entities/invoice";
 import { InvoiceTypeEnum } from "../../../entities/invoice/model/types/InvoiceType";
 import {
   Currency,
   CurrencyEnumType,
 } from "../../../shared/model/enums/Currency";
+import { EntitiesDataModel } from "../../../shared/model/types/EntitiesDataModel";
 import { addInvoice } from "../api/addInvoice";
 import invoiceNumberGenerate from "../lib/utils/invoiceNumberGenerate";
 import { InvoiceRequest } from "../model/types/InvoiceRequest";
 
-function AddInvoiceForm() {
+interface InvoiceFormProps {
+  close: () => void;
+}
+
+function AddInvoiceForm({ close }: InvoiceFormProps) {
+  const queryClient = useQueryClient();
+
   const { control, handleSubmit } = useForm<Omit<Invoice, "invoiceNumber">>({
     defaultValues: {
       name: "",
@@ -35,16 +38,27 @@ function AddInvoiceForm() {
 
   const mutation = useMutation({
     mutationFn: (formData: InvoiceRequest) => addInvoice(formData),
+    onSuccess: (data) => {
+      queryClient.setQueriesData<EntitiesDataModel<Invoice>>(
+        { queryKey: ["invoices"] },
+        (prev) => {
+          return (
+            prev && {
+              data: [...prev.data, data.data],
+              meta: prev.meta,
+            }
+          );
+        }
+      );
+    },
   });
 
-  const { addInvoiceToStore } = useInvoiceStore();
-
   const onSubmit = (data: Omit<Invoice, "invoiceNumber">) => {
-    addInvoiceToStore({ ...data, invoiceNumber: invoiceNumberGenerate() });
-
     mutation.mutate({
       data: { ...data, invoiceNumber: invoiceNumberGenerate() },
     });
+
+    close();
   };
 
   return (

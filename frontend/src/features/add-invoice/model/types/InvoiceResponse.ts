@@ -7,3 +7,11 @@ export interface InvoiceResponse {
   };
   meta: unknown;
 }
+
+export interface InvoiceResponseArr {
+  data: Array<{
+    id: number;
+    attributes: Omit<Invoice, "id">;
+  }>;
+  meta: unknown;
+}
