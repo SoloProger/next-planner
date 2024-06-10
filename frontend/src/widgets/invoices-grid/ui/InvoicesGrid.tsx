@@ -1,16 +1,21 @@
-import { InvoiceCard } from "../../../entities/invoice";
-import { tempInvoices } from "../constants/tempInvoices";
+import { useQuery } from "@tanstack/react-query";
+import { getInvoices, InvoiceCard } from "../../../entities/invoice";
 
 function InvoicesGrid() {
+  const { data } = useQuery({
+    queryKey: ["invoices"],
+    queryFn: () => getInvoices(),
+  });
+
   return (
-    <section className="flex gap-18 w-100">
-      {tempInvoices.map((invoice, idx) => (
+    <section className="grid col-3 gap-18">
+      {data?.data.map((invoice, idx) => (
         <InvoiceCard
           key={idx}
-          invoiceNumber={invoice.invoiceNumber}
-          invoiceCount={invoice.invoiceCount}
-          invoiceType={invoice.invoiceType}
-          currency={invoice.currency}
+          invoiceNumber={invoice.attributes.invoiceNumber}
+          invoiceCount={invoice.attributes.invoiceCount}
+          invoiceType={invoice.attributes.invoiceType}
+          currency={invoice.attributes.currency}
         />
       ))}
     </section>
