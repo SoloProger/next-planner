@@ -803,14 +803,16 @@ export interface ApiRecordRecord extends Schema.CollectionType {
     date: Attribute.Date;
     count: Attribute.Decimal & Attribute.Required;
     description: Attribute.Text;
-    recordType: Attribute.Enumeration<['INCOME', 'CONSUMPTION']> &
-      Attribute.Required &
-      Attribute.DefaultTo<'CONSUMPTION'>;
     category: Attribute.Relation<
       'api::record.record',
       'manyToOne',
       'api::category.category'
     >;
+    recordType: Attribute.Enumeration<
+      ['\u0414\u043E\u0445\u043E\u0434', '\u0420\u0430\u0441\u0445\u043E\u0434']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'\u0420\u0430\u0441\u0445\u043E\u0434'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
