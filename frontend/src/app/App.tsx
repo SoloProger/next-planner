@@ -20,6 +20,7 @@ import { Outlet } from "react-router-dom";
 import AddCategoryForm from "../features/add-category/ui/AddCategoryForm";
 import AddGoalForm from "../features/add-goal/ui/AddGoalForm";
 import { AddInvoiceForm } from "../features/add-invoice";
+import AddRecordForm from "../features/add-record/ui/AddRecordForm";
 import { Navbar } from "../widgets/navbar";
 import { Sidebar } from "../widgets/sidebar";
 import CustomQueryClientProvider from "./providers/CustomQueryClientProvider";
@@ -34,6 +35,7 @@ function App() {
     invoiceForm: AddInvoiceForm,
     goalForm: AddGoalForm,
     categoryForm: AddCategoryForm,
+    recordForm: AddRecordForm,
   };
 
   function renderForm(): JSX.Element {
@@ -82,6 +84,10 @@ function App() {
               className={`trans-1  absolute b-190 r-130 bg-orange p-16 border-circle pointer ${
                 isShow ? "opacity" : "opacity-none"
               }`}
+              onClick={() => {
+                onOpen();
+                setForm("recordForm");
+              }}
             >
               <FaFileInvoiceDollar />
             </div>
