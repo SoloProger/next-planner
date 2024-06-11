@@ -1,4 +1,5 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
+import AuthPage from "../pages/AuthPage";
 import CategoriesPage from "../pages/CategoriesPage";
 import DetailRecordPage from "../pages/DetailRecordPage";
 import HistoryPage from "../pages/HistoryPage";
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       { path: "planning", element: <PlanningPage /> },
       { path: "categories", element: <CategoriesPage /> },
     ],
+  },
+  {
+    path: "/auth",
+    element: <AuthPage />,
   },
 ]);
 
