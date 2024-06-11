@@ -26,20 +26,20 @@
     "description": {
       "type": "text"
     },
-    "recordType": {
-      "type": "enumeration",
-      "enum": [
-        "INCOME",
-        "CONSUMPTION"
-      ],
-      "default": "CONSUMPTION",
-      "required": true
-    },
     "category": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::category.category",
       "inversedBy": "records"
+    },
+    "recordType": {
+      "type": "enumeration",
+      "enum": [
+        "Доход",
+        "Расход"
+      ],
+      "required": true,
+      "default": "Расход"
     }
   }
 }

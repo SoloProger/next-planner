@@ -3,3 +3,9 @@ export const enum Currency {
   RUBLE = "RU",
   EURO = "EU",
 }
+
+export const enum CurrencyEnumType {
+  DOLLAR = "DOLLAR",
+  RUBLE = "RUBLE",
+  EURO = "EURO",
+}

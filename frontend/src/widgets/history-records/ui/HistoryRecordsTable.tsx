@@ -7,13 +7,19 @@ import {
   Thead,
   Tr,
 } from "@chakra-ui/react";
+import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
+import { getRecords } from "../../../entities/record/api/getRecords";
 import { RecordType } from "../../../entities/record/model/types/RecordType";
 import { tableColumns } from "../constants/tableColumns";
-import { tempRecords } from "../constants/tempRecords";
 
 function HistoryRecordsTable() {
   const navigate = useNavigate();
+
+  const { data } = useQuery({
+    queryKey: ["records"],
+    queryFn: () => getRecords(),
+  });
 
   return (
     <TableContainer>
@@ -26,25 +32,25 @@ function HistoryRecordsTable() {
           </Tr>
         </Thead>
         <Tbody>
-          {tempRecords.map((record, idx) => (
+          {data?.data.map((record, idx) => (
             <Tr
               key={idx}
               className="pointer"
               onClick={() => navigate(`/detail-record/${record.id}`)}
             >
               <Td>{idx + 1}</Td>
-              <Td>{record.name}</Td>
-              <Td>{record.date}</Td>
-              <Td>{record.category}</Td>
+              <Td>{record.attributes.name}</Td>
+              <Td>{record.attributes.date}</Td>
+              <Td>{record.attributes.category}</Td>
               <Td>
                 <span
                   className={`${
-                    record.recordType === RecordType.INCOME
+                    record.attributes.recordType === RecordType.INCOME
                       ? "bg-green"
                       : "bg-danger"
                   } p-4 border-radius-4`}
                 >
-                  {record.recordType}
+                  {record.attributes.recordType}
                 </span>
               </Td>
             </Tr>
