@@ -1,5 +1,18 @@
 version: "3.8"
 services:
+
+  frontend:
+    container_name: frontend
+    build:
+      context: frontend
+      dockerfile: Dockerfile.prod
+    networks:
+      - strapi
+    ports:
+      - 80:80
+    depends_on:
+      - strapi
+
   strapi:
     container_name: strapi
     build:
