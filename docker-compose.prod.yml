@@ -17,7 +17,7 @@ services:
     container_name: strapi
     build:
       context: backend
-      dockerfile: Dockerfile
+      dockerfile: Dockerfile.prod
     restart: always
     environment:
       DATABASE_CLIENT: ${DATABASE_CLIENT}
