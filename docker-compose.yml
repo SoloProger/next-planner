@@ -18,7 +18,7 @@ services:
   strapi:
     container_name: strapi
     build:
-      context: backend
+      context: admin
       dockerfile: Dockerfile
     restart: always
     environment:
@@ -33,12 +33,12 @@ services:
       APP_KEYS: ${APP_KEYS}
       NODE_ENV: ${NODE_ENV}
     volumes:
-      - ./backend/config:/opt/app/config
-      - ./backend/src:/opt/app/src
-      - ./backend/package.json:/opt/package.json
-      - ./backend/yarn.lock:/opt/yarn.lock
-      - ./backend/.env:/opt/app/.env
-      - ./backend/public/uploads:/opt/app/public/uploads
+      - ./admin/config:/opt/app/config
+      - ./admin/src:/opt/app/src
+      - ./admin/package.json:/opt/package.json
+      - ./admin/yarn.lock:/opt/yarn.lock
+      - ./admin/.env:/opt/app/.env
+      - ./admin/public/uploads:/opt/app/public/uploads
     ports:
       - "1337:1337"
     networks:
