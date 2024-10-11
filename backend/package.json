@@ -9,13 +9,23 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "prettier": "prettier --ignore-path .gitignore --write \"./src/**/*.+(js|ts|json)\"",
-    "prettier:fix": "prettier --write src"
+    "prettier:fix": "prettier --write src",
+    "typeorm": "typeorm-ts-node-commonjs",
+    "entity": "npx typeorm-ts-node-commonjs entity:create ./src/database/entities/${ENT_NAME}",
+    "mig:add": "npx typeorm-ts-node-commonjs migration:create ./src/database/migrations/${MIG_NAME}",
+    "mig:gen": "npx typeorm-ts-node-commonjs migration:generate ./src/database/migrations/${MIG_NAME} -d ./src/data-source.ts",
+    "mig:run": "npx typeorm-ts-node-commonjs migration:run -d ./src/data-source.ts",
+    "mig:back": "npx typeorm-ts-node-commonjs migration:revert -d ./src/data-source.ts"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "fastify": "^5.0.0"
+    "dotenv": "^16.4.5",
+    "fastify": "^5.0.0",
+    "pg": "^8.13.0",
+    "reflect-metadata": "^0.2.2",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
     "@types/node": "^22.7.0",
