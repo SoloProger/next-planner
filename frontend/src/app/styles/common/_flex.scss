@@ -47,7 +47,7 @@
   align-items: flex-start;
 }
 
-@for $count from 0 through 100 {
+@for $count from 0 through 300 {
   .gap-#{$count} {
     gap: 1px * $count;
 

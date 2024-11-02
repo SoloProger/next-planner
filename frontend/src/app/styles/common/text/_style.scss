@@ -1,60 +1,57 @@
 @import "_mixins.scss";
 
-.header-1 {
-  @include heading-1();
+.title {
+  @include title-styles();
 }
 
-.header-2 {
-  @include heading-2();
+.title-2 {
+  @include title-2-styles();
 }
 
-.header-semibold-3 {
-  @include heading-3-semibold();
+.title-3 {
+  @include title-3-styles();
 }
 
-.header-semibold-4 {
-  @include heading-4-semibold();
-}
-
-.header-semibold-5 {
-  @include heading-5-semibold();
-}
-
-.header-semibold-6 {
-  @include heading-6-semibold();
-}
-
-.header-semibold-7 {
-  @include heading-7-semibold();
-}
-
-.subtitle-1 {
-  @include subtitle-1();
+.subtitle {
+  @include subtitle-styles();
 }
 
 .subtitle-2 {
-  @include subtitle-2();
+  @include subtitle-2-styles();
 }
 
-.subtitle-semibold-1 {
-  @include subtitle-1-semibold();
+.subtitle-3 {
+  @include subtitle-3-styles();
 }
 
-.subtitle-semibold-2 {
-  @include subtitle-2-semibold();
+.subtitle-4 {
+  @include subtitle-4-styles();
 }
 
-.subtitle-bold-2 {
-  @include subtitle-2-bold();
+.headline {
+  @include headline-styles();
 }
 
-.text-small {
-  @include text-small();
+.text {
+  @include text-styles();
 }
 
-.text-small-2 {
-  @include text-very-small();
+.caption {
+  @include caption-styles();
 }
+
+.caption-2 {
+  @include caption-2-styles();
+}
+
+.caption-3 {
+  @include caption-3-styles();
+}
+
+.caption-4 {
+  @include caption-4-styles();
+}
+
 
 .text-decor-none {
   text-decoration: none;

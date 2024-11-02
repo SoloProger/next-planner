@@ -1,17 +1,17 @@
-import { Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
-import { useMutation } from "@tanstack/react-query";
-import { Controller, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { authUser } from "../api/authUser";
-import { AuthRequest } from "../model/types/AuthRequest";
+import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react';
+import { useMutation } from '@tanstack/react-query';
+import { Controller, useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { authUser } from '../api/authUser';
+import { AuthRequest } from '../model/types/AuthRequest';
 
 function AuthForm() {
   const navigate = useNavigate();
 
   const { control, handleSubmit } = useForm<AuthRequest>({
     defaultValues: {
-      identifier: "",
-      password: "",
+      identifier: '',
+      password: '',
     },
   });
 
@@ -22,8 +22,8 @@ function AuthForm() {
   const onSubmit = (formData: AuthRequest) => {
     mutation.mutate(formData, {
       onSuccess: (data) => {
-        localStorage.setItem("token", data.jwt);
-        navigate("/");
+        localStorage.setItem('token', data.jwt);
+        navigate('/');
       },
     });
   };
