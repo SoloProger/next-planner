@@ -27,6 +27,10 @@
     &-i {
       border-radius: 1px * $count !important;
     }
+
+    &-hover:hover {
+      border-radius: 1px * $count;
+    }
   }
 }
 

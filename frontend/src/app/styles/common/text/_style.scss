@@ -30,6 +30,10 @@
 
 .headline {
   @include headline-styles();
+
+  &-hover:hover {
+    @include headline-styles();
+  }
 }
 
 .text {
