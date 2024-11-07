@@ -9,3 +9,10 @@
 .text-white-hover:hover {
   color: $white !important;
 }
+
+
+.svg-fill-hover:hover {
+  path {
+    stroke: $white !important;
+  }
+}

@@ -17,7 +17,7 @@ function App() {
     return (
         <>
             <Navbar openSidebar={() => setOpenSidebar(!isOpenSidebar)}/>
-            <main className="flex gap-24 relative h-vh-100">
+            <main className="flex gap-24 relative">
                 <Sidebar isOpen={isOpenSidebar}/>
                 <Outlet/>
             </main>

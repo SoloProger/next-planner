@@ -1,33 +1,41 @@
-import { currencySymbols } from "../constants/currencySymbols";
-import { InvoiceCardProps } from "../model/types/InvoiceCardProps";
+import {currencySymbols} from "../constants/currencySymbols";
+import {InvoiceCardProps} from "../model/types/InvoiceCardProps";
 
 function InvoiceCard({
-  invoiceCount,
-  invoiceNumber,
-  currency,
-  invoiceType,
-}: InvoiceCardProps) {
-  return (
-    <div className="bg-orange p-16 border-radius-2 hp-250 w-100 flex-col jc-space">
-      <div className="flex-col gap-12">
-        <h2 className="header-semibold-6">
-          <strong>Тип счета:</strong> {invoiceType}
-        </h2>
-        <div className="flex jc-space ai-center">
-          <h3 className="header-semibold-7">
-            <strong>Счет:</strong> {invoiceNumber}
-          </h3>
-          <h3 className="header-semibold-7">
-            <strong>Валюта:</strong> {currency}
-          </h3>
+                         invoiceCount,
+                         invoiceNumber,
+                         currency,
+                         invoiceType,
+                         name,
+                     }: InvoiceCardProps) {
+
+    const backgrounds = {
+        "MAIN": 'bg-main-card',
+        "SAVINGS": "bg-saving-card",
+        "INVEST": "bg-invest-card"
+    }
+
+    const truncateName = (name: string) => {
+        if (name.length >= 14) {
+            return name.slice(0, 13) + '...';
+        }
+        return name;
+    }
+
+    return (
+        <div
+            className={`p-16 border-radius-2 wp-200 hp-150 flex-col border-radius-8 gap-8 ${backgrounds[invoiceType]}`}>
+            <h3 className="caption-3">
+                №{invoiceNumber}
+            </h3>
+            <h2 className="subtitle-2">
+                {truncateName(name as string)}
+            </h2>
+            <div className="caption-2">
+                Текущий баланс: <span className="headline">{invoiceCount}{currencySymbols[currency]}</span>
+            </div>
         </div>
-      </div>
-      <span className="subtitle-1">
-        <strong>Текущий баланс:</strong> {invoiceCount}
-        {currencySymbols[currency]}
-      </span>
-    </div>
-  );
+    );
 }
 
 export default InvoiceCard;
