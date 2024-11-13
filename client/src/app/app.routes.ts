@@ -9,6 +9,14 @@ export const routes: Routes = [
         path: 'invoice',
         loadComponent: () => import("../pages/invoice-page.component").then(m => m.InvoicePageComponent),
       },
+      {
+        path: 'history',
+        loadComponent: () => import("../pages/history-page.component").then(m => m.HistoryPageComponent),
+      },
+      {
+        path: 'detail-record/:id',
+        loadComponent: () => import("../pages/record-detail-page.component").then(m => m.RecordDetailPageComponent),
+      },
       {path: '', redirectTo: '/invoice', pathMatch: 'full'},
     ],
   },

@@ -3,7 +3,6 @@ import {Invoice} from "../../model/types/Invoice";
 import {BehaviorSubject} from "rxjs";
 import {BaseStrapiApiService} from "../../../../shared/api/services/base-strapi-api.service";
 import {EntityDataModel} from "../../../../shared/model/types/EntityDataModel";
-import {EntitiesDataModel} from "../../../../shared/model/types/EntitiesDataModel";
 
 @Component({
   selector: 'app-invoice-grid',
@@ -33,8 +32,7 @@ export class InvoiceGridComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getAll('invoices').subscribe((invoices) => {
-      const _invoices = invoices as unknown as EntitiesDataModel<Invoice>
-      this.invoices.next(_invoices.data)
+      this.invoices.next(invoices.data)
     })
   }
 }
