@@ -1,6 +1,0 @@
-.adaptive-grid {
-  @include device(desktop) {
-    display: flex;
-    flex-direction: column;
-  }
-}

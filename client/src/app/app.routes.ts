@@ -17,6 +17,14 @@ export const routes: Routes = [
         path: 'detail-record/:id',
         loadComponent: () => import("../pages/record-detail-page.component").then(m => m.RecordDetailPageComponent),
       },
+      {
+        path: 'planning',
+        loadComponent: () => import("../pages/planning-page.component").then(m => m.PlanningPageComponent),
+      },
+      {
+        path: 'categories',
+        loadComponent: () => import("../pages/category-page.component").then(m => m.CategoryPageComponent),
+      },
       {path: '', redirectTo: '/invoice', pathMatch: 'full'},
     ],
   },
