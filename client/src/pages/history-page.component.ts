@@ -8,7 +8,6 @@ import {RecordModule} from "../entities/record/record.module";
     <app-page-layout title="История записей">
       <app-records-history></app-records-history>
     </app-page-layout>
-
   `,
   standalone: true,
   imports: [

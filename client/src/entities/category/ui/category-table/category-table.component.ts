@@ -8,29 +8,7 @@ import {Category} from "../../model/types/Category";
 @Component({
   selector: 'app-category-table',
   template: `
-
-    <section>
-      <table>
-        <thead>
-        <tr>
-          @for (column of tableColumns; track column) {
-            <th>{{ column }}</th>
-          }
-        </tr>
-        </thead>
-        <tbody>
-          @for (record of categories$ | async; track record.id) {
-            <tr>
-              <td>{{ record.id }}</td>
-              <td>{{ record.attributes.name }}</td>
-              <td>{{ record.attributes.description }}</td>
-            </tr>
-          }
-        </tbody>
-      </table>
-    </section>
-
-
+    <app-table [columns]="tableColumns" [strapiData]="categories$ | async"></app-table>
   `
 })
 

@@ -6,9 +6,11 @@ import {SidebarComponent} from "../../../sidebar/ui/sidebar.component";
   selector: 'app-main-layout',
   template: `
     <app-navbar></app-navbar>
-    <main class="flex gap-24 relative">
+    <main class="flex gap-5 relative">
       <app-sidebar></app-sidebar>
-      <ng-content></ng-content>
+      <section class="w-100 mr-25">
+        <ng-content></ng-content>
+      </section>
     </main>`,
   imports: [
     NavbarComponent,

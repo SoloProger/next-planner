@@ -28,8 +28,8 @@ export class RecordsHistoryComponent implements OnInit {
     this.apiService.getAll("records").subscribe((records) => this.records$.next(records.data))
   }
 
-  public navigateToDetailPage(id?: number) {
-    this.router.navigate([`/detail-record/${id}`]);
+  public navigateToDetailPage(item: EntityDataModel<Record>) {
+    this.router.navigate([`/detail-record/${item.id}`]);
   }
 
 }
