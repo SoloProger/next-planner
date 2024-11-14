@@ -18,6 +18,7 @@ import {EntityDataModel} from "../../../../shared/model/types/EntityDataModel";
           [currency]="invoice.attributes.currency"
         ></app-invoice-card>
       }
+      <ng-content></ng-content>
     </section>
 
   `
