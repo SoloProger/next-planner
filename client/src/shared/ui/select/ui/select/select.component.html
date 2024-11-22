@@ -1,7 +1,12 @@
 @if (labelOut) {
   <div class="headline mb-8">{{ labelOut }}</div>
 }
-<div class="select" [ngClass]="{'select-open': open}" [appOutsideClick]="open" (outsideClick)="open = false">
+<div
+  class="select"
+  [ngClass]="{ 'select-open': open }"
+  [appOutsideClick]="open"
+  (outsideClick)="open = false"
+>
   <div
     class="selected pointer flex jc-space ai-center"
     [ngClass]="{ 'chevron-rotate selected-active': open }"
@@ -28,10 +33,7 @@
   }
 
   @if (emptyMessage && options.length === 0) {
-    <div
-      class="options"
-      [ngClass]="{ 'display-none': !open }"
-    >
+    <div class="options" [ngClass]="{ 'display-none': !open }">
       <div class="p-15-px">
         {{ emptyMessage }}
       </div>

@@ -1,4 +1,4 @@
-import {Observable} from "rxjs";
+import { Observable } from 'rxjs';
 
 export interface ApiService<T, Y> {
   getAll(endpoint: string): Observable<T | T[]>;
@@ -10,5 +10,4 @@ export interface ApiService<T, Y> {
   put(endpoint: string, id: number, data: Y): Observable<T>;
 
   delete(endpoint: string, id: number): Observable<T>;
-
 }

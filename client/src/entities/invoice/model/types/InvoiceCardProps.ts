@@ -1,3 +1,3 @@
-import { Invoice } from "./Invoice";
+import { Invoice } from './Invoice';
 
-export type InvoiceCardProps = Omit<Invoice, "id">;
+export type InvoiceCardProps = Omit<Invoice, 'id'>;

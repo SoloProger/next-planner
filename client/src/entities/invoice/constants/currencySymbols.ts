@@ -1,5 +1,5 @@
 export const currencySymbols = {
-  DOLLAR: "$",
-  RUBLE: "₽",
-  EURO: "€",
+  DOLLAR: '$',
+  RUBLE: '₽',
+  EURO: '€',
 };

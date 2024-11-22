@@ -9,19 +9,18 @@ import {
   Renderer2,
 } from '@angular/core';
 
-@Directive({selector: '[appOutsideClick]', standalone: true})
+@Directive({ selector: '[appOutsideClick]', standalone: true })
 export class OutsideClickDirective implements OnInit, OnDestroy {
-  @Input({required: true})
+  @Input({ required: true })
   public appOutsideClick!: boolean;
 
   @Output()
-  public outsideClick: EventEmitter<void> = new EventEmitter();
+  public outsideClick = new EventEmitter<void>();
 
   constructor(
     private renderer: Renderer2,
     private element: ElementRef,
-  ) {
-  }
+  ) {}
 
   private listener?: () => void;
 

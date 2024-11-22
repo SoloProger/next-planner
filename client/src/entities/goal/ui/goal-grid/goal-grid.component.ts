@@ -1,8 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {BehaviorSubject} from "rxjs";
-import {EntityDataModel} from "../../../../shared/model/types/EntityDataModel";
-import {BaseStrapiApiService} from "../../../../shared/api/services/base-strapi-api.service";
-import {Goal} from "../../model/types/Goal";
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { EntityDataModel } from '../../../../shared/model/types/EntityDataModel';
+import { BaseStrapiApiService } from '../../../../shared/api/services/base-strapi-api.service';
+import { Goal } from '../../model/types/Goal';
 
 @Component({
   selector: 'app-goal-grid',
@@ -17,18 +17,18 @@ import {Goal} from "../../model/types/Goal";
         ></app-goal-card>
       }
     </section>
-  `
+  `,
 })
-
 export class GoalGridComponent implements OnInit {
-  public goals$: BehaviorSubject<EntityDataModel<Goal>[]> = new BehaviorSubject<EntityDataModel<Goal>[]>([]);
+  public goals$: BehaviorSubject<EntityDataModel<Goal>[]> = new BehaviorSubject<
+    EntityDataModel<Goal>[]
+  >([]);
 
-  constructor(private apiService: BaseStrapiApiService<Goal, Goal>) {
-  }
+  constructor(private apiService: BaseStrapiApiService<Goal, Goal>) {}
 
   ngOnInit() {
     this.apiService.getAll('goals').subscribe((goals) => {
-      this.goals$.next(goals.data)
-    })
+      this.goals$.next(goals.data);
+    });
   }
 }

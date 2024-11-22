@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-page-layout',
@@ -8,9 +8,8 @@ import {Component, Input} from '@angular/core';
       <h1 class="subtitle-2">{{ title }}</h1>
       <ng-content></ng-content>
     </section>
-  `
+  `,
 })
-
 export class PageLayoutComponent {
-  @Input({required: true}) title!: string;
+  @Input({ required: true }) title!: string;
 }

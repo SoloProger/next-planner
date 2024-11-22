@@ -1,8 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {RouterModule} from "@angular/router";
-import {CommonModule} from "@angular/common";
-import {MainLayoutComponent} from "../widgets/layouts/main-layout/ui/main-layout.component";
-
+import { Component, OnInit } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { MainLayoutComponent } from '../widgets/layouts/main-layout/ui/main-layout.component';
 
 @Component({
   selector: 'app-main',
@@ -12,17 +11,10 @@ import {MainLayoutComponent} from "../widgets/layouts/main-layout/ui/main-layout
       <router-outlet></router-outlet>
     </app-main-layout>
   `,
-  imports: [
-    CommonModule,
-    RouterModule,
-    MainLayoutComponent
-  ],
+  imports: [CommonModule, RouterModule, MainLayoutComponent],
 })
-
 export class MainPageComponent implements OnInit {
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

@@ -1,4 +1,4 @@
 export enum RecordType {
-  INCOME = "Доход",
-  CONSUMPTION = "Расход",
+  INCOME = 'Доход',
+  CONSUMPTION = 'Расход',
 }

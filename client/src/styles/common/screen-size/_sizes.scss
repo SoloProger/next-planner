@@ -1,4 +1,4 @@
-@import '_breakpoints.scss';
+@import "_breakpoints.scss";
 
 @mixin device($breakpoint) {
   @if $breakpoint == phone {

@@ -1,8 +1,7 @@
-import {NgModule} from '@angular/core';
-import {CategoryTableComponent} from "./ui/category-table/category-table.component";
-import {CommonModule} from "@angular/common";
-import {TableComponent} from "../../shared/ui/table/table.component";
-
+import { NgModule } from '@angular/core';
+import { CategoryTableComponent } from './ui/category-table/category-table.component';
+import { CommonModule } from '@angular/common';
+import { TableComponent } from '../../shared/ui/table/table.component';
 
 @NgModule({
   imports: [CommonModule, TableComponent],
@@ -10,5 +9,4 @@ import {TableComponent} from "../../shared/ui/table/table.component";
   declarations: [CategoryTableComponent],
   providers: [],
 })
-export class CategoryModule {
-}
+export class CategoryModule {}

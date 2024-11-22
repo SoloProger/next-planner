@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {PageLayoutComponent} from "../widgets/layouts/page-layout/ui/page-layout.component";
-import {GoalModule} from "../entities/goal/goal.module";
+import { Component, OnInit } from '@angular/core';
+import { PageLayoutComponent } from '../widgets/layouts/page-layout/ui/page-layout.component';
+import { GoalModule } from '../entities/goal/goal.module';
 
 @Component({
   selector: 'app-planning-page',
@@ -10,16 +10,10 @@ import {GoalModule} from "../entities/goal/goal.module";
     </app-page-layout>
   `,
   standalone: true,
-  imports: [
-    PageLayoutComponent,
-    GoalModule
-  ]
+  imports: [PageLayoutComponent, GoalModule],
 })
-
 export class PlanningPageComponent implements OnInit {
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

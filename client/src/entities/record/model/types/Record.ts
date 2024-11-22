@@ -1,4 +1,4 @@
-import { RecordType } from "./RecordType";
+import { RecordType } from './RecordType';
 
 export interface Record {
   name: string;

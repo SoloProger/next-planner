@@ -1,6 +1,11 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
-import {KeyValuePipe, NgClass, NgIf} from "@angular/common";
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+} from '@angular/core';
+import { KeyValuePipe, NgClass, NgIf } from '@angular/common';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 enum FormValidationMessages {
   required = 'Обязательное поле',
@@ -17,8 +22,15 @@ enum FormValidationMessages {
         <label class="headline">{{ label }}</label>
       }
       <input
-        [class]="'border-stroke border-1 border-radius-15 bg text-color input p-x-16 ' + inputStyle "
-        [ngClass]="{'p-y-16 ': inputSize === 'small', 'p-y-20': inputSize === 'regular', 'text-danger border-danger-i': validation?.invalid}"
+        [class]="
+          'border-stroke border-1 border-radius-15 bg text-color input p-x-16 ' +
+          inputStyle
+        "
+        [ngClass]="{
+          'p-y-16 ': inputSize === 'small',
+          'p-y-20': inputSize === 'regular',
+          'text-danger border-danger-i': validation?.invalid,
+        }"
         [placeholder]="placeholder"
         [type]="type"
         [value]="inputFormValue"
@@ -28,23 +40,22 @@ enum FormValidationMessages {
     @if (validation?.invalid) {
       <div>
         @for (error of validation.errors | keyvalue; track error) {
-          <span
-            class="text-danger caption-4 mt-2"
-          >
-          {{ getErrorMessage(error) }}
+          <span class="text-danger caption-4 mt-2">
+            {{ getErrorMessage(error) }}
           </span>
         }
       </div>
     }
   `,
-  styles: [`
-    .input {
-      &:focus {
-        outline: none;
+  styles: [
+    `
+      .input {
+        &:focus {
+          outline: none;
+        }
       }
-    }
-
-  `],
+    `,
+  ],
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgIf, NgClass, KeyValuePipe],
@@ -56,31 +67,27 @@ enum FormValidationMessages {
     },
   ],
 })
-
 export class InputComponent implements ControlValueAccessor {
+  @Input() blockStyles = '';
 
-  @Input() blockStyles: string = "";
-
-  @Input() inputStyle: string = "";
+  @Input() inputStyle = '';
 
   @Input() label?: string;
 
-  @Input() inputSize: string = 'regular';
+  @Input() inputSize = 'regular';
 
-  @Input() type: string = 'text';
+  @Input() type = 'text';
 
-  @Input() placeholder: string = "";
+  @Input() placeholder = '';
 
   @Input()
   public validation?: any;
 
-  public inputFormValue: string = '';
+  public inputFormValue = '';
 
-  public onChange = (inputFormValue: string) => {
-  };
+  public onChange = (inputFormValue: string) => {};
 
-  public onTouched = () => {
-  };
+  public onTouched = () => {};
 
   public touched = false;
 
@@ -113,7 +120,7 @@ export class InputComponent implements ControlValueAccessor {
     const errorMessage =
       FormValidationMessages[
         (error as { key: string }).key as keyof typeof FormValidationMessages
-        ];
+      ];
 
     if (
       (error as { key: string }).key === 'minlength' ||
@@ -126,5 +133,4 @@ export class InputComponent implements ControlValueAccessor {
 
     return errorMessage;
   }
-
 }

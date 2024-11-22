@@ -1,3 +1,1 @@
-export interface Option {
-  [key: string]: string;
-}
+export type Option = Record<string, string>;

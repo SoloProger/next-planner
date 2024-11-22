@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {PageLayoutComponent} from "../widgets/layouts/page-layout/ui/page-layout.component";
-import {RecordModule} from "../entities/record/record.module";
+import { Component, OnInit } from '@angular/core';
+import { PageLayoutComponent } from '../widgets/layouts/page-layout/ui/page-layout.component';
+import { RecordModule } from '../entities/record/record.module';
 
 @Component({
   selector: 'app-history-page',
@@ -10,16 +10,10 @@ import {RecordModule} from "../entities/record/record.module";
     </app-page-layout>
   `,
   standalone: true,
-  imports: [
-    PageLayoutComponent,
-    RecordModule
-  ]
+  imports: [PageLayoutComponent, RecordModule],
 })
-
 export class HistoryPageComponent implements OnInit {
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

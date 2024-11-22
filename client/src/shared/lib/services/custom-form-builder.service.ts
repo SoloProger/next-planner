@@ -1,8 +1,7 @@
-import {Injectable} from "@angular/core";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import { Injectable } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
-
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class CustomFormBuilder extends FormBuilder {
   public validation(controlName: string, form: FormGroup): any {
     return {

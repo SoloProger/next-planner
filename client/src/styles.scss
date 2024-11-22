@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
 @import "styles/common";
 
 *,
@@ -8,35 +8,27 @@
   padding: 0;
 
   box-sizing: border-box;
-
 }
 
 body {
-
   overflow: hidden;
   font-family: "Manrope", sans-serif;
 
   cursor: default;
   background-color: $background !important;
-
 }
 
 .pointer {
-
   cursor: pointer;
-
 }
 
 .opacity {
   opacity: 1;
-
 }
 
 .opacity-none {
   opacity: 0;
-
 }
-
 
 .link-reset {
   color: inherit;
@@ -50,6 +42,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }

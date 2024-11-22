@@ -1,7 +1,7 @@
-import {NgModule} from '@angular/core';
-import {GoalCardComponent} from "./ui/goal-card/goal-card.component";
-import {GoalGridComponent} from "./ui/goal-grid/goal-grid.component";
-import {CommonModule} from "@angular/common";
+import { NgModule } from '@angular/core';
+import { GoalCardComponent } from './ui/goal-card/goal-card.component';
+import { GoalGridComponent } from './ui/goal-grid/goal-grid.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   imports: [CommonModule],
@@ -9,5 +9,4 @@ import {CommonModule} from "@angular/common";
   declarations: [GoalGridComponent, GoalCardComponent],
   providers: [],
 })
-export class GoalModule {
-}
+export class GoalModule {}

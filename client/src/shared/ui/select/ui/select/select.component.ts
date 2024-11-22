@@ -1,8 +1,13 @@
-import {ChangeDetectionStrategy, Component, forwardRef, Input} from '@angular/core';
-import {ControlValueAccessor, NG_VALUE_ACCESSOR} from '@angular/forms';
-import {Option} from '../../model/types/option';
-import {NgClass} from "@angular/common";
-import {OutsideClickDirective} from "../../../../lib/directives/outside-click.directive";
+import {
+  ChangeDetectionStrategy,
+  Component,
+  forwardRef,
+  Input,
+} from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Option } from '../../model/types/option';
+import { NgClass } from '@angular/common';
+import { OutsideClickDirective } from '../../../../lib/directives/outside-click.directive';
 
 @Component({
   selector: 'app-select',
@@ -17,16 +22,13 @@ import {OutsideClickDirective} from "../../../../lib/directives/outside-click.di
       useExisting: forwardRef(() => SelectComponent),
     },
   ],
-  imports: [
-    NgClass,
-    OutsideClickDirective
-  ]
+  imports: [NgClass, OutsideClickDirective],
 })
 export class SelectComponent implements ControlValueAccessor {
-  @Input({required: true})
+  @Input({ required: true })
   public options!: Option[];
 
-  @Input({required: true})
+  @Input({ required: true })
   public label!: string;
 
   @Input() valueMapperField?: string;
@@ -35,21 +37,18 @@ export class SelectComponent implements ControlValueAccessor {
   public emptyMessage?: string;
 
   @Input()
-  public placeholder: string = 'Выберите';
+  public placeholder = 'Выберите';
 
   @Input()
-  public labelOut?: string
+  public labelOut?: string;
 
+  public open = false;
 
-  public open: boolean = false;
+  public selected = '';
 
-  public selected: string = '';
+  public onChange = (selected: string) => {};
 
-  public onChange = (selected: string) => {
-  };
-
-  public onTouched = () => {
-  };
+  public onTouched = () => {};
 
   public disabled = false;
 
