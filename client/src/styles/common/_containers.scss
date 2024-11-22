@@ -11,21 +11,11 @@
 }
 
 .scroll-container {
-  height: 100vh;
+  height: calc(100vh - 250px);
   overflow: scroll;
   overflow-x: hidden;
 }
 
-@for $count from 0 through 1000 {
-  .scroll-container-cut-#{$count} {
-    height: calc(100vh - 1px * $count);
-    overflow-y: auto;
-  }
-
-  .scroll-container-cut-#{$count}::-webkit-scrollbar {
-    width: 0px;
-  }
-}
 
 .main-container {
   max-width: 1220px;

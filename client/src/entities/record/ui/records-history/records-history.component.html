@@ -2,6 +2,7 @@
   <app-table
     [columns]="tableColumns"
     [strapiData]="records$ | async"
+    [addNewEntityColspan]="6"
     (rowClicked)="navigateToDetailPage($event)"
   ></app-table>
 </section>

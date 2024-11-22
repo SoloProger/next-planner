@@ -9,8 +9,7 @@ import { InvoiceModule } from '../../../entities/invoice/invoice.module';
   template: `
     <div
       class="p-16 border-radius-2 pointer wp-200 hp-150 flex ai-center jc-center border-radius-8 gap-8 bg-stroke"
-      (click)="addInvoice()"
-    >
+      (click)="addInvoice()">
       <img src="/img/add.svg" alt="icon" class="h-48 w-48" />
     </div>
   `,

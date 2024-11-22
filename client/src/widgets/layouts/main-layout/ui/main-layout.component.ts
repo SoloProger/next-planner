@@ -4,10 +4,11 @@ import { SidebarComponent } from '../../../sidebar/ui/sidebar.component';
 
 @Component({
   selector: 'app-main-layout',
-  template: ` <app-navbar></app-navbar>
+  template: `
+    <app-navbar></app-navbar>
     <main class="flex gap-5 relative">
       <app-sidebar></app-sidebar>
-      <section class="w-100 mr-25">
+      <section class="w-100 mr-25 scroll-container">
         <ng-content></ng-content>
       </section>
     </main>`,

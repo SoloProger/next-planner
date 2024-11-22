@@ -18,7 +18,7 @@ export class DialogService {
 
   constructor(
     private appRef: ApplicationRef,
-    private injector: Injector,
+    private injector: Injector
   ) {}
 
   public openDialog(componentType: Type<any>, config: DialogConfig): DialogRef {

@@ -20,7 +20,7 @@ export class BaseStrapiApiService<T, Y>
           Authorization:
             'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzMxNDM5MTY2LCJleHAiOjE3MzQwMzExNjZ9.mIeI5JJcQNSOxHJHFNi6S-Q_ogBdgvVkusMRLvmXucQ',
         },
-      },
+      }
     );
   }
 
@@ -32,7 +32,7 @@ export class BaseStrapiApiService<T, Y>
           Authorization:
             'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzMxNDM5MTY2LCJleHAiOjE3MzQwMzExNjZ9.mIeI5JJcQNSOxHJHFNi6S-Q_ogBdgvVkusMRLvmXucQ',
         },
-      },
+      }
     );
   }
 
@@ -45,24 +45,24 @@ export class BaseStrapiApiService<T, Y>
           Authorization:
             'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzMxNDM5MTY2LCJleHAiOjE3MzQwMzExNjZ9.mIeI5JJcQNSOxHJHFNi6S-Q_ogBdgvVkusMRLvmXucQ',
         },
-      },
+      }
     );
   }
 
   public put(
     endpoint: string,
     id: number,
-    data: Y,
+    data: Y
   ): Observable<EntityDataModel<T>> {
     return this.http.put<EntityDataModel<T>>(
       `${environment.apiUrl}/${endpoint}/${id}`,
-      data,
+      data
     );
   }
 
   public delete(endpoint: string, id: number): Observable<EntityDataModel<T>> {
     return this.http.delete<EntityDataModel<T>>(
-      `${environment.apiUrl}/${endpoint}/${id}`,
+      `${environment.apiUrl}/${endpoint}/${id}`
     );
   }
 }

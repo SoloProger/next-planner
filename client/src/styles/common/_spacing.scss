@@ -47,6 +47,10 @@
 
   .p-#{$count} {
     padding: 1px * $count;
+
+    &-i {
+      padding: 1px * $count !important;
+    }
   }
 
   .p-x-#{$count} {
