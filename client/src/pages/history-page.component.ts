@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageLayoutComponent } from '../widgets/layouts/page-layout/ui/page-layout.component';
 import { RecordModule } from '../entities/record/record.module';
 
@@ -12,8 +12,4 @@ import { RecordModule } from '../entities/record/record.module';
   standalone: true,
   imports: [PageLayoutComponent, RecordModule],
 })
-export class HistoryPageComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class HistoryPageComponent {}

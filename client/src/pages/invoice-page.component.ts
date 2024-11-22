@@ -4,7 +4,7 @@ import { InvoiceModule } from '../entities/invoice/invoice.module';
 import { AddInvoiceComponent } from '../features/add-invoice/ui/add-invoice.component';
 
 @Component({
-  selector: 'invoice-page',
+  selector: 'app-invoice-page',
   standalone: true,
   imports: [PageLayoutComponent, InvoiceModule, AddInvoiceComponent],
   template: `

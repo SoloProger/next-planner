@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageLayoutComponent } from '../widgets/layouts/page-layout/ui/page-layout.component';
 import { RecordModule } from '../entities/record/record.module';
 

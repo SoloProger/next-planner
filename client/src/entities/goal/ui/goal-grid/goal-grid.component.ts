@@ -13,8 +13,7 @@ import { Goal } from '../../model/types/Goal';
           [name]="goal.attributes.name"
           [description]="goal.attributes.description"
           [totalAmount]="goal.attributes.totalAmount"
-          [currentAmount]="goal.attributes.currentAmount"
-        ></app-goal-card>
+          [currentAmount]="goal.attributes.currentAmount"></app-goal-card>
       }
     </section>
   `,
@@ -27,7 +26,7 @@ export class GoalGridComponent implements OnInit {
   constructor(private apiService: BaseStrapiApiService<Goal, Goal>) {}
 
   ngOnInit() {
-    this.apiService.getAll('goals').subscribe((goals) => {
+    this.apiService.getAll('goals').subscribe(goals => {
       this.goals$.next(goals.data);
     });
   }

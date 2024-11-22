@@ -14,7 +14,7 @@ import { backgrounds } from '../../constants/cardBackgrounds';
       <div class="caption-2">
         Текущий баланс:
         <span class="headline"
-          >{{ invoiceCount }}{{ currencySymbols[currency] }}</span
+        >{{ invoiceCount }}{{ currencySymbols[currency] }}</span
         >
       </div>
     </div>

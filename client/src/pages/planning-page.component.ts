@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageLayoutComponent } from '../widgets/layouts/page-layout/ui/page-layout.component';
 import { GoalModule } from '../entities/goal/goal.module';
 
@@ -12,8 +12,4 @@ import { GoalModule } from '../entities/goal/goal.module';
   standalone: true,
   imports: [PageLayoutComponent, GoalModule],
 })
-export class PlanningPageComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class PlanningPageComponent {}

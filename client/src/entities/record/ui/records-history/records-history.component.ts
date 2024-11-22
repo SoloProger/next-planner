@@ -18,13 +18,13 @@ export class RecordsHistoryComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private apiService: BaseStrapiApiService<Record, Record>,
+    private apiService: BaseStrapiApiService<Record, Record>
   ) {}
 
   ngOnInit() {
     this.apiService
       .getAll('records')
-      .subscribe((records) => this.records$.next(records.data));
+      .subscribe(records => this.records$.next(records.data));
   }
 
   public navigateToDetailPage(item: EntityDataModel<Record>) {

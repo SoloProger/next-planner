@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { PageLayoutComponent } from '../widgets/layouts/page-layout/ui/page-layout.component';
 import { CategoryModule } from '../entities/category/category.module';
 
@@ -10,8 +10,4 @@ import { CategoryModule } from '../entities/category/category.module';
   standalone: true,
   imports: [PageLayoutComponent, CategoryModule],
 })
-export class CategoryPageComponent implements OnInit {
-  constructor() {}
-
-  ngOnInit() {}
-}
+export class CategoryPageComponent {}

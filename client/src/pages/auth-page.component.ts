@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthModule } from '../proceses/auth/auth.module';
 import { NgIf } from '@angular/common';
 
@@ -22,8 +22,7 @@ import { NgIf } from '@angular/common';
       <img
         [src]="isLogin ? 'img/login.jpeg' : 'img/register2.png'"
         alt="auth"
-        class=" p-y-28 p-x-23 wp-750 hp-845 border-radius-70"
-      />
+        class=" p-y-28 p-x-23 wp-750 hp-845 border-radius-70" />
     </section>
   `,
   standalone: true,
