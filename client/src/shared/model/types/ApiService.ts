@@ -5,7 +5,7 @@ export interface ApiService<T, Y> {
 
   getOne(endpoint: string, id: number): Observable<T>;
 
-  post(endpoint: string, id: number, data: Y): Observable<T>;
+  post(endpoint: string, data: Y): Observable<T>;
 
   put(endpoint: string, id: number, data: Y): Observable<T>;
 

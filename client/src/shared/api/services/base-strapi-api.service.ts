@@ -28,8 +28,12 @@ export class BaseStrapiApiService<T, Y> implements ApiService<EntitiesDataModel<
     })
   }
 
-  public post(endpoint: string, id: number, data: Y): Observable<EntityDataModel<T>> {
-    return this.http.post<EntityDataModel<T>>(`${environment.apiUrl}/${endpoint}/${id}`, data)
+  public post(endpoint: string, data: Y): Observable<EntityDataModel<T>> {
+    return this.http.post<EntityDataModel<T>>(`${environment.apiUrl}/${endpoint}`, data, {
+      headers: {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzMxNDM5MTY2LCJleHAiOjE3MzQwMzExNjZ9.mIeI5JJcQNSOxHJHFNi6S-Q_ogBdgvVkusMRLvmXucQ"
+      }
+    })
   }
 
   public put(endpoint: string, id: number, data: Y): Observable<EntityDataModel<T>> {
