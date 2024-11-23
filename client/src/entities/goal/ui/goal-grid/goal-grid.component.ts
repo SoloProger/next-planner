@@ -15,6 +15,7 @@ import { Goal } from '../../model/types/Goal';
           [totalAmount]="goal.attributes.totalAmount"
           [currentAmount]="goal.attributes.currentAmount"></app-goal-card>
       }
+      <ng-content></ng-content>
     </section>
   `,
 })
