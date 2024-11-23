@@ -7,14 +7,13 @@ import { backgrounds } from '../../constants/cardBackgrounds';
   template: `
     <div
       class="p-16 border-radius-2 wp-200 hp-150 flex-col border-radius-8 gap-8"
-      [ngClass]="backgrounds[invoiceType]"
-    >
+      [ngClass]="backgrounds[invoiceType]">
       <h3 class="caption-3">№{{ invoiceNumber }}</h3>
       <h2 class="subtitle-2">{{ name | slice: 0 : 10 }}...</h2>
       <div class="caption-2">
         Текущий баланс:
         <span class="headline"
-        >{{ invoiceCount }}{{ currencySymbols[currency] }}</span
+          >{{ invoiceCount }}{{ currencySymbols[currency] }}</span
         >
       </div>
     </div>

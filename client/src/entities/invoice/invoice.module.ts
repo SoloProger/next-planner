@@ -8,6 +8,7 @@ import { SelectComponent } from '../../shared/ui/select/ui/select/select.compone
 import { InputComponent } from '../../shared/ui/input/input.component';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { InvoiceDetailNavbarComponent } from './ui/invoice-detail-navbar/invoice-detail-navbar.component';
 
 @NgModule({
   imports: [
@@ -19,11 +20,16 @@ import { ReactiveFormsModule } from '@angular/forms';
     ButtonComponent,
     ReactiveFormsModule,
   ],
-  exports: [InvoiceGridComponent, InvoiceFormComponent],
+  exports: [
+    InvoiceGridComponent,
+    InvoiceFormComponent,
+    InvoiceDetailNavbarComponent,
+  ],
   declarations: [
     InvoiceGridComponent,
     InvoiceCardComponent,
     InvoiceFormComponent,
+    InvoiceDetailNavbarComponent,
   ],
 })
 export class InvoiceModule {}

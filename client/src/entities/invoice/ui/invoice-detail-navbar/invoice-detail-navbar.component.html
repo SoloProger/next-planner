@@ -1,0 +1,19 @@
+<nav class="flex-col gap-12">
+  <div class="flex ai-center jc-space">
+    <div>
+      <h2 class="subtitle">{{ invoiceName() }}</h2>
+      <p class="text text-color">№{{ invoiceNumber() }}</p>
+    </div>
+    <div class="flex ai-center gap-50">
+      <div>
+        <h3 class="text text-color">Текущий баланс:</h3>
+        <p class="title-color subtitle-3 text-end">{{ balance() }}{{ currencySymbol() }}</p>
+      </div>
+      <div>
+        <h3 class="text text-color">Счет создан:</h3>
+        <p class="title-color subtitle-3">{{ createDate() }}</p>
+      </div>
+    </div>
+  </div>
+  <app-button class="w-30 as-end">Редактировать</app-button>
+</nav>

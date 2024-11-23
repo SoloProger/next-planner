@@ -8,4 +8,5 @@ export interface Invoice {
   currency: CurrencyEnumType;
   invoiceCount: number;
   invoiceType: InvoiceTypeEnum;
+  createdAt?: string;
 }

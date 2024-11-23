@@ -14,6 +14,13 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'detail-invoice/:id',
+        loadComponent: () =>
+          import('../pages/invoice-detail-page.component').then(
+            m => m.InvoiceDetailPageComponent
+          ),
+      },
+      {
         path: 'history',
         loadComponent: () =>
           import('../pages/history-page.component').then(
