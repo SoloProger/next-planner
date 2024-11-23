@@ -1,7 +1,14 @@
-<div class="flex ai-center gap-12 pointer shadow-hover p-16 trans-1 border-radius-4">
-  <div class="flex-col gap-6">
-    <h4 class="subtitle-semibold-1">{{ name }}</h4>
-    <p class="subtitle-semibold-2">{{ currentAmount }} из {{ totalAmount }}</p>
-    <p class="subtitle-2">{{ description }}</p>
+<div class="flex-col  gap-12 pointer  p-16 border-1 border-stroke  border-radius-8">
+  <span class="bg-cancel text-white border-radius-5 p-4 caption-4 text-center w-50">tag</span>
+  <div class="flex-col gap-16">
+    <h3 class="headline title-color">{{ name() }}</h3>
+    <p class="text-color caption-4">{{ description() }}</p>
+    <app-progress-bar
+      [progress]="currentAmount()"
+      [total]="totalAmount()"
+      color="bg-cancel"
+      withViewValues
+    >
+    </app-progress-bar>
   </div>
 </div>
