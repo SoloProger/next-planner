@@ -1,0 +1,24 @@
+.container-1 {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.card-container {
+  width: 100%;
+  height: 100%;
+  max-width: 350px;
+  max-height: 400px;
+}
+
+.scroll-container {
+  height: calc(100vh - 250px);
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+
+.main-container {
+  max-width: 1220px;
+  display: flex;
+  margin: 0 auto;
+}

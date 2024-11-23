@@ -1,0 +1,28 @@
+<table class="table">
+  <thead>
+  <tr>
+    @for (column of columns(); track column) {
+      <th class="subtitle-3">{{ column.columnName }}</th>
+    }
+  </tr>
+  </thead>
+  <tbody>
+    @if (strapiData()) {
+      @for (item of strapiData(); track item) {
+        <tr class="table-hover" (click)="rowClicked.emit(item)">
+          @for (column of columns(); track column) {
+            <td class="caption-2">
+              {{ item.attributes[column.columnField] || "-" }}
+            </td>
+          }
+        </tr>
+      }
+    }
+  <tr>
+    <td [attr.colspan]="addNewEntityColspan()" class="text-center p-10-i bg pointer table-hover"
+        (click)="addNewEntity.emit()">
+      <img src="/img/add.svg" alt="icon" class="hp-48 wp-48" />
+    </td>
+  </tr>
+  </tbody>
+</table>

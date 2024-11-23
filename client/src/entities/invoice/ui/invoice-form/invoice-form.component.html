@@ -1,0 +1,34 @@
+<form class="flex-col gap-12" [formGroup]="formGroup">
+  <app-input
+    label="Название"
+    formControlName="name"
+    [validation]="fb.validation('name', formGroup)"
+  ></app-input>
+  <app-select
+    [options]="currencies"
+    labelOut="Валюта"
+    label="name"
+    valueMapperField="value"
+    placeholder="Выберите валюту"
+    emptyMessage="Нет данных"
+    formControlName="currency"
+  ></app-select>
+  <app-select
+    [options]="invoiceTypes"
+    labelOut="Тип счета"
+    label="name"
+    valueMapperField="value"
+    placeholder="Выберите тип"
+    emptyMessage="Нет данных"
+    formControlName="invoiceType"
+  ></app-select>
+  <app-input
+    label="Сумма на счете"
+    type="number"
+    formControlName="invoiceCount"
+    [validation]="fb.validation('invoiceCount', formGroup)"
+  ></app-input>
+  <app-button (click)="onSubmit()" [disabled]="formGroup.invalid">
+    Добавить
+  </app-button>
+</form>

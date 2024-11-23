@@ -1,0 +1,11 @@
+.border-stroke {
+  border-color: $stroke !important;
+}
+
+.border-danger {
+  border-color: $danger;
+
+  &-i {
+    border-color: $danger !important;
+  }
+}

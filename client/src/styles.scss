@@ -1,0 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap");
+@import "styles/common";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+
+  box-sizing: border-box;
+}
+
+body {
+  overflow: hidden;
+  font-family: "Manrope", sans-serif;
+
+  cursor: default;
+  background-color: $background !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.opacity {
+  opacity: 1;
+}
+
+.opacity-none {
+  opacity: 0;
+}
+
+.link-reset {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Убираем стрелки у input number
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}

@@ -1,0 +1,43 @@
+.select {
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color: #fafafa;
+  border-radius: 16px;
+  border: 1px solid #eeeeee;
+
+  &-open {
+    //border-bottom-left-radius: 0 !important;
+    //border-bottom-right-radius: 0 !important;
+  }
+}
+
+.selected {
+  font-weight: 400;
+  padding: 16px;
+  width: 100%;
+
+  &-active {
+    outline: none;
+  }
+}
+
+.chevron-rotate {
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+.options {
+  overflow: hidden;
+  z-index: 1;
+  padding: 16px;
+  background-color: #fafafa;
+  border-top: 1px solid #eeeeee;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.option-hover:hover {
+  cursor: pointer;
+  background-color: #eeeeee;
+}
