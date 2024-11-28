@@ -5,6 +5,8 @@ import { PageLayoutComponent } from '../widgets/layouts/page-layout/ui/page-layo
 import { BaseStrapiApiService } from '../shared/api/services/base-strapi-api.service';
 import { Invoice } from '../entities/invoice/model/types/Invoice';
 import { EntityDataModel } from '../shared/model/types/EntityDataModel';
+import { TabsComponent } from '../shared/ui/tabs/tabs.component';
+import { Tab } from '../shared/model/types/Tab';
 
 @Component({
   selector: 'app-invoice-detail-page',
@@ -17,17 +19,21 @@ import { EntityDataModel } from '../shared/model/types/EntityDataModel';
         [balance]="invoice()?.invoiceCount"
         [invoiceCurrency]="invoice()?.currency">
       </app-invoice-detail-navbar>
+      <app-tabs [tabs]="tabs"></app-tabs>
     </app-page-layout>
   `,
   standalone: true,
-  imports: [InvoiceModule, PageLayoutComponent],
+  imports: [InvoiceModule, PageLayoutComponent, TabsComponent],
 })
 export class InvoiceDetailPageComponent implements OnInit {
   public route = inject(ActivatedRoute);
+
   public api: BaseStrapiApiService<Invoice, Invoice> =
     inject(BaseStrapiApiService);
 
   public invoice = signal<Invoice | null>(null);
+
+  public tabs: Tab[] = [{ name: 'Таблица', active: true }, { name: 'График' }];
 
   ngOnInit(): void {
     this.api
