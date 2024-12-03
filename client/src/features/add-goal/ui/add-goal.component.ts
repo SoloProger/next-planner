@@ -1,11 +1,10 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { SlicePipe } from '@angular/common';
 import { DialogService } from '../../../shared/ui/dialog/services/dialog.service';
-import { InvoiceModule } from '../../../entities/invoice/invoice.module';
 import { GoalFormComponent } from '../../../entities/goal/ui/goal-form/goal-form.component';
-import { BaseStrapiApiService } from '../../../shared/api/services/base-strapi-api.service';
-import { Goal } from '../../../entities/goal/model/types/Goal';
-import { switchMap } from 'rxjs';
+import { GoalModule } from '../../../entities/goal/goal.module';
+import { DialogModule } from '../../../shared/ui/dialog/dialog.module';
+import { GoalHandlerService } from '../../../entities/goal/model/services/goal-handler.service';
 
 @Component({
   selector: 'app-add-goal',
@@ -17,21 +16,21 @@ import { switchMap } from 'rxjs';
     </div>
   `,
   standalone: true,
-  imports: [SlicePipe, InvoiceModule],
+  imports: [SlicePipe, GoalModule, DialogModule],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddGoalComponent {
   public dialog = inject(DialogService);
-  public api: BaseStrapiApiService<Goal, { data: Goal }> =
-    inject(BaseStrapiApiService);
+
+  public handler = inject(GoalHandlerService);
 
   public addGoal() {
     this.dialog
       .openDialog(GoalFormComponent, {
         title: 'Добавить цель',
       })
-      .afterClosed.pipe(
-        switchMap(formData => this.api.post('goals', { data: formData }))
-      )
-      .subscribe();
+      .afterClosed.subscribe(formData => {
+        this.handler.addGoal({ data: formData });
+      });
   }
 }
