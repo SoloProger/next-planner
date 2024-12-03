@@ -1,14 +1,18 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { EntityDataModel } from '../../../../shared/model/types/EntityDataModel';
-import { BaseStrapiApiService } from '../../../../shared/api/services/base-strapi-api.service';
-import { Goal } from '../../model/types/Goal';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  computed,
+  inject,
+  OnInit,
+} from '@angular/core';
+import { GoalHandlerService } from '../../model/services/goal-handler.service';
 
 @Component({
   selector: 'app-goal-grid',
   template: `
-    <section class="flex ai-center wi-100 gap-24">
-      @for (goal of goals$ | async; track goal.id) {
+    <section class="flex ai-center wi-100 gap-24 wrap">
+      @for (goal of goals(); track goal.id) {
         <app-goal-card
           [name]="goal.attributes.name"
           [description]="goal.attributes.description"
@@ -18,17 +22,14 @@ import { Goal } from '../../model/types/Goal';
       <ng-content></ng-content>
     </section>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GoalGridComponent implements OnInit {
-  public goals$: BehaviorSubject<EntityDataModel<Goal>[]> = new BehaviorSubject<
-    EntityDataModel<Goal>[]
-  >([]);
+  public handler = inject(GoalHandlerService);
 
-  constructor(private apiService: BaseStrapiApiService<Goal, Goal>) {}
+  public goals = computed(() => this.handler.state.entities());
 
   ngOnInit() {
-    this.apiService.getAll('goals').subscribe(goals => {
-      this.goals$.next(goals.data);
-    });
+    this.handler.getGoals();
   }
 }
