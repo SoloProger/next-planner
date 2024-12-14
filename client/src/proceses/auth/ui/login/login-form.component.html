@@ -5,19 +5,21 @@
       We can assign tasks, set deadlines, and track progress effortlessly.
     </p>
   </div>
-  <form class="flex-col gap-32">
+  <form class="flex-col gap-32" [formGroup]="loginForm">
     <app-input
       type="text"
       label="Email или логин"
       placeholder="Введите логин/email"
-    ></app-input>
+      formControlName="login"
+      [validation]="form.validation('login', loginForm)"></app-input>
     <app-input
       type="password"
-      label="Имя пользователя"
+      label="Пароль"
       placeholder="Введите пароль"
-    ></app-input>
+      formControlName="password"
+      [validation]="form.validation('password', loginForm)"></app-input>
 
     <span class="title-color text pointer">Забыли пароль ?</span>
-    <app-button type="submit" disabled>Войти</app-button>
+    <app-button type="submit" [disabled]="loginForm.invalid" (click)="enterAuth()">Войти</app-button>
   </form>
 </div>

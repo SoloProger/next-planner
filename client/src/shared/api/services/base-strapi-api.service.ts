@@ -18,7 +18,7 @@ export class BaseStrapiApiService<T, Y>
       {
         headers: {
           Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzMxNDM5MTY2LCJleHAiOjE3MzQwMzExNjZ9.mIeI5JJcQNSOxHJHFNi6S-Q_ogBdgvVkusMRLvmXucQ',
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMyNzg5MDc5LCJleHAiOjE3MzUzODEwNzl9.Vybf2-cCdEdxLl5_OP6T8Tjn81pqKdJIUgNCWppgPZw',
         },
       }
     );
@@ -30,7 +30,7 @@ export class BaseStrapiApiService<T, Y>
       {
         headers: {
           Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzMxNDM5MTY2LCJleHAiOjE3MzQwMzExNjZ9.mIeI5JJcQNSOxHJHFNi6S-Q_ogBdgvVkusMRLvmXucQ',
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMyNzg5MDc5LCJleHAiOjE3MzUzODEwNzl9.Vybf2-cCdEdxLl5_OP6T8Tjn81pqKdJIUgNCWppgPZw',
         },
       }
     );
@@ -43,7 +43,7 @@ export class BaseStrapiApiService<T, Y>
       {
         headers: {
           Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNzMxNDM5MTY2LCJleHAiOjE3MzQwMzExNjZ9.mIeI5JJcQNSOxHJHFNi6S-Q_ogBdgvVkusMRLvmXucQ',
+            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMyNzg5MDc5LCJleHAiOjE3MzUzODEwNzl9.Vybf2-cCdEdxLl5_OP6T8Tjn81pqKdJIUgNCWppgPZw',
         },
       }
     );
