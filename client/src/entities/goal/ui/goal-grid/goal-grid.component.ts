@@ -1,12 +1,14 @@
 import {
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
   Component,
   computed,
   inject,
   OnInit,
 } from '@angular/core';
 import { GoalHandlerService } from '../../model/services/goal-handler.service';
+import { Goal } from '../../model/types/Goal';
+import { DialogService } from '../../../../shared/ui/dialog/services/dialog.service';
+import { GoalFormComponent } from '../goal-form/goal-form.component';
 
 @Component({
   selector: 'app-goal-grid',
@@ -17,7 +19,8 @@ import { GoalHandlerService } from '../../model/services/goal-handler.service';
           [name]="goal.attributes.name"
           [description]="goal.attributes.description"
           [totalAmount]="goal.attributes.totalAmount"
-          [currentAmount]="goal.attributes.currentAmount"></app-goal-card>
+          [currentAmount]="goal.attributes.currentAmount"
+          (edit)="editGoal($event, goal.id)"></app-goal-card>
       }
       <ng-content></ng-content>
     </section>
@@ -26,10 +29,23 @@ import { GoalHandlerService } from '../../model/services/goal-handler.service';
 })
 export class GoalGridComponent implements OnInit {
   public handler = inject(GoalHandlerService);
+  public dialog = inject(DialogService);
 
   public goals = computed(() => this.handler.state.entities());
 
   ngOnInit() {
     this.handler.getGoals();
+  }
+
+  public editGoal(goal: Goal | null, id?: number): void {
+    this.dialog
+      .openDialog(GoalFormComponent, {
+        title: 'Изменить цель',
+        data: { ...goal, id },
+        isEditing: true,
+      })
+      .afterClosed.subscribe(formData => {
+        this.handler.updateGoal(formData.id, { data: formData.formData });
+      });
   }
 }

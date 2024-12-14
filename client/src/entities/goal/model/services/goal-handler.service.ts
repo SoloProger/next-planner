@@ -26,4 +26,11 @@ export class GoalHandlerService {
       this.state.setEntity(_goal.data);
     });
   }
+
+  public updateGoal<T>(id: number, formData: T): void {
+    this.api.put(this.ENDPOINT, id, formData).subscribe(goal => {
+      const _goal = goal as unknown as { data: EntityDataModel<Goal> };
+      this.state.setEntity(_goal.data);
+    });
+  }
 }

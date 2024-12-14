@@ -16,7 +16,7 @@ import { DialogRef } from '../lib/utils/dialog-ref';
   templateUrl: './dialog.component.html',
   styleUrl: './dialog.component.scss',
 })
-export class DialogComponent implements AfterViewInit, OnDestroy {
+export class DialogComponent<T> implements AfterViewInit, OnDestroy {
   public componentRef!: ComponentRef<any>;
   public childComponentType!: Type<any>;
 
@@ -25,10 +25,11 @@ export class DialogComponent implements AfterViewInit, OnDestroy {
   private readonly _onClose = new Subject<any>();
   public onClose = this._onClose.asObservable();
   public title!: string;
+  public data?: T;
 
   constructor(
     private cd: ChangeDetectorRef,
-    private dialogRef: DialogRef,
+    private dialogRef: DialogRef
   ) {}
 
   ngAfterViewInit(): void {

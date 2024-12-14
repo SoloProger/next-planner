@@ -1,5 +1,8 @@
 <div class="flex-col w-100 min-wp-220  gap-12 pointer  p-16 border-1 border-stroke  border-radius-8">
-  <span class="bg-cancel text-white border-radius-5 p-4 caption-4 text-center w-50">tag</span>
+  <div class="w-100 flex ai-center jc-space">
+    <div class="bg-cancel text-white border-radius-5 p-4 caption-4 text-center w-50">tag</div>
+    <img src="/img/edit.svg" alt="edit" (click)="edit.emit(goal)" />
+  </div>
   <div class="flex-col gap-16">
     <h3 class="headline title-color">{{ name() }}</h3>
     <p class="text-color caption-4">{{ description() }}</p>
