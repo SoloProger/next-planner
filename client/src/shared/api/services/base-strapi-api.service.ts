@@ -14,38 +14,20 @@ export class BaseStrapiApiService<T, Y>
 
   public getAll(endpoint: string): Observable<EntitiesDataModel<T>> {
     return this.http.get<EntitiesDataModel<T>>(
-      `${environment.apiUrl}/${endpoint}`,
-      {
-        headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMyNzg5MDc5LCJleHAiOjE3MzUzODEwNzl9.Vybf2-cCdEdxLl5_OP6T8Tjn81pqKdJIUgNCWppgPZw',
-        },
-      }
+      `${environment.apiUrl}/${endpoint}`
     );
   }
 
   public getOne(endpoint: string, id: number): Observable<EntityDataModel<T>> {
     return this.http.get<EntityDataModel<T>>(
-      `${environment.apiUrl}/${endpoint}/${id}`,
-      {
-        headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMyNzg5MDc5LCJleHAiOjE3MzUzODEwNzl9.Vybf2-cCdEdxLl5_OP6T8Tjn81pqKdJIUgNCWppgPZw',
-        },
-      }
+      `${environment.apiUrl}/${endpoint}/${id}`
     );
   }
 
   public post(endpoint: string, data: Y): Observable<EntityDataModel<T>> {
     return this.http.post<EntityDataModel<T>>(
       `${environment.apiUrl}/${endpoint}`,
-      data,
-      {
-        headers: {
-          Authorization:
-            'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNzMyNzg5MDc5LCJleHAiOjE3MzUzODEwNzl9.Vybf2-cCdEdxLl5_OP6T8Tjn81pqKdJIUgNCWppgPZw',
-        },
-      }
+      data
     );
   }
 
