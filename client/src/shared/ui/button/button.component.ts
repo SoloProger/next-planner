@@ -5,7 +5,7 @@ import { NgClass } from '@angular/common';
   selector: 'app-button',
   template: `
     <button
-      class="p-19 border-radius-10 border-none w-100 text-white subtitle-3"
+      class="p-19 border-radius-10 border-none w-100 text-white subtitle-3 pointer"
       [type]="type"
       [ngClass]="{ 'bg-text': disabled, 'bg-title': !disabled }"
       [disabled]="disabled"

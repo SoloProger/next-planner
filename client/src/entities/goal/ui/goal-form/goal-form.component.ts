@@ -22,10 +22,17 @@ export class GoalFormComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log(this.dialogData);
+    this.formGroup.patchValue(this.dialogData.data);
   }
 
   public onSubmit(): void {
-    this.dialogRef.close(this.formGroup.value);
+    if (!this.dialogData.isEditing) {
+      this.dialogRef.close(this.formGroup.value);
+    } else {
+      this.dialogRef.close({
+        formData: this.formGroup.value,
+        id: this.dialogData.data.id,
+      });
+    }
   }
 }

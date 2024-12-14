@@ -24,5 +24,12 @@
     [validation]="fb.validation('totalAmount', formGroup)"
   >
   </app-input>
-  <app-button (click)="onSubmit()" [disabled]="formGroup.invalid">Добавить</app-button>
+  <app-button (click)="onSubmit()" [disabled]="formGroup.invalid">
+    @if (dialogData.isEditing) {
+      Изменить
+    } @else {
+      Добавить
+    }
+  </app-button>
+
 </form>

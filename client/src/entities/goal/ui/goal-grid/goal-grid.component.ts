@@ -20,7 +20,7 @@ import { GoalFormComponent } from '../goal-form/goal-form.component';
           [description]="goal.attributes.description"
           [totalAmount]="goal.attributes.totalAmount"
           [currentAmount]="goal.attributes.currentAmount"
-          (edit)="editGoal($event)"></app-goal-card>
+          (edit)="editGoal($event, goal.id)"></app-goal-card>
       }
       <ng-content></ng-content>
     </section>
@@ -37,10 +37,15 @@ export class GoalGridComponent implements OnInit {
     this.handler.getGoals();
   }
 
-  public editGoal(goal: Goal | null): void {
-    this.dialog.openDialog(GoalFormComponent, {
-      title: 'Изменить цель',
-      data: goal,
-    });
+  public editGoal(goal: Goal | null, id?: number): void {
+    this.dialog
+      .openDialog(GoalFormComponent, {
+        title: 'Изменить цель',
+        data: { ...goal, id },
+        isEditing: true,
+      })
+      .afterClosed.subscribe(formData => {
+        this.handler.updateGoal(formData.id, { data: formData.formData });
+      });
   }
 }
