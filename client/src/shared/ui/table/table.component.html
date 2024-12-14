@@ -4,6 +4,9 @@
     @for (column of columns(); track column) {
       <th class="subtitle-3">{{ column.columnName }}</th>
     }
+    @if (withActions()) {
+      <th>Действия</th>
+    }
   </tr>
   </thead>
   <tbody>
@@ -15,11 +18,18 @@
               {{ item.attributes[column.columnField] || "-" }}
             </td>
           }
+          @if (withActions()) {
+            <td class="text-center">
+              <img src="/img/editer.svg" alt="edit" class="pointer hp-20 wp-20" (click)="editClick.emit(item)" />
+            </td>
+          }
         </tr>
       }
+
     }
   <tr>
-    <td [attr.colspan]="addNewEntityColspan()" class="text-center p-10-i bg pointer table-hover"
+    <td [attr.colspan]="withActions() ? columns().length + 1 : columns().length"
+        class="text-center p-10-i bg pointer table-hover"
         (click)="addNewEntity.emit()">
       <img src="/img/add.svg" alt="icon" class="hp-48 wp-48" />
     </td>

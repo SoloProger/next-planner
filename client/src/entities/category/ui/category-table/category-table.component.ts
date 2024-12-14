@@ -17,10 +17,11 @@ import { switchMap } from 'rxjs';
   selector: 'app-category-table',
   template: `
     <app-table
+      withActions
       [columns]="tableColumns"
-      [addNewEntityColspan]="2"
       [strapiData]="categories()"
-      (addNewEntity)="addNewCategory()">
+      (addNewEntity)="addNewCategory()"
+      (editClick)="editCategory($event)">
     </app-table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,6 +52,26 @@ export class CategoryTableComponent implements OnInit {
       .afterClosed.pipe(
         switchMap((formData: Category) =>
           this.api.post('categories', { data: formData })
+        )
+      )
+      .subscribe(category => {
+        const _category = category as unknown as {
+          data: EntityDataModel<Category>;
+        };
+        this.categories.update(categories => [...categories, _category.data]);
+      });
+  }
+
+  public editCategory(category: EntityDataModel<Category> | null): void {
+    this.dialog
+      .openDialog(CategoryFormComponent, {
+        title: 'Изменить категорию',
+        data: { ...category?.attributes, id: category?.id },
+        isEditing: true,
+      })
+      .afterClosed.pipe(
+        switchMap(formData =>
+          this.api.put('categories', formData.id, { data: formData.formData })
         )
       )
       .subscribe(category => {
