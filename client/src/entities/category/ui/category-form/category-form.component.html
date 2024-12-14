@@ -1,5 +1,6 @@
 <form class="flex-col gap-12" [formGroup]="formGroup">
   <app-input label="Название" formControlName="name" [validation]="fb.validation('name', formGroup)"></app-input>
   <app-input label="Описание" formControlName="description"></app-input>
-  <app-button (click)="onSubmit()" [disabled]="formGroup.invalid">Добавить</app-button>
+  <app-button (click)="onSubmit()" [disabled]="formGroup.invalid" appChangeBtnTitle isEdit>
+  </app-button>
 </form>
