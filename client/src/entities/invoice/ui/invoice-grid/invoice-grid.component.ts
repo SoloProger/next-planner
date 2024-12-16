@@ -14,8 +14,7 @@ import { EntityDataModel } from '../../../../shared/model/types/EntityDataModel'
           [invoiceNumber]="invoice.attributes.invoiceNumber"
           [invoiceType]="invoice.attributes.invoiceType"
           [name]="invoice.attributes.name"
-          [currency]="invoice.attributes.currency"
-          (enterEdit)="enterEdit()"></app-invoice-card>
+          [currency]="invoice.attributes.currency"></app-invoice-card>
       }
       <ng-content></ng-content>
     </section>
@@ -24,8 +23,6 @@ import { EntityDataModel } from '../../../../shared/model/types/EntityDataModel'
 export class InvoiceGridComponent implements OnInit {
   public invoices: BehaviorSubject<EntityDataModel<Invoice>[]> =
     new BehaviorSubject<EntityDataModel<Invoice>[]>([]);
-
-  public enterEdit() {}
 
   constructor(private apiService: BaseStrapiApiService<Invoice, Invoice>) {}
 

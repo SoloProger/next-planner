@@ -12,9 +12,9 @@ import { sidebarLinks } from '../constants/sidebarLinks';
           @for (link of links; track link.path) {
             <a
               [routerLink]="link.path"
-              class="link-reset flex svg-fill-hover ai-center gap-8 headline-hover pointer bg-black-hover text-white-hover border-radius-8-hover p-8"
+              class="link-reset flex svg-fill-hover ai-center gap-8 pointer bg-black-hover text-white-hover border-radius-8-hover p-8"
             >
-              <img [src]="'/img/' + link.iconName + '.svg'" alt="icon" />
+              <!--              <img [src]="'/img/' + link.iconName + '.svg'" alt="icon" />-->
               {{ link.name }}
             </a>
           }

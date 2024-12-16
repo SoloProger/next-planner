@@ -1,4 +1,4 @@
-import { Component, input, Input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { currencySymbols } from '../../constants/currencySymbols';
 import { backgrounds } from '../../constants/cardBackgrounds';
 
@@ -10,9 +10,6 @@ import { backgrounds } from '../../constants/cardBackgrounds';
       [ngClass]="backgrounds[invoiceType()]">
       <div class="flex gap-50">
         <h3 class="caption-3">№{{ invoiceNumber() }}</h3>
-        <div>
-          <img src="img/editer.svg" alt="" (click)="enterEdit.emit()" />
-        </div>
       </div>
       <h2 class="subtitle-2">{{ name() | slice: 0 : 10 }}...</h2>
       <div class="caption-2">
@@ -34,8 +31,6 @@ export class InvoiceCardComponent {
   public name = input.required<string>();
 
   public invoiceType = input.required<string>();
-
-  public enterEdit = output();
 
   protected readonly currencySymbols: Record<string, string> = currencySymbols;
   protected readonly backgrounds: Record<string, string> = backgrounds;

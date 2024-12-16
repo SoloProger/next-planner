@@ -10,14 +10,15 @@ import { NgIf } from '@angular/common';
         @if (isLogin) {
           <app-login-form></app-login-form>
         } @else {
-          <app-registration-form></app-registration-form>
+          <!--          <app-registration-form></app-registration-form>-->
         }
-        <span class="flex jc-center ai-center gap-4 subtitle-4 text-color">
-          {{ isLogin ? 'Нет аккаунта ?' : 'Уже есть аккаунт ?' }}
-          <b class="subtitle-3 title-color pointer" (click)="setIsLogin()">
-            {{ isLogin ? 'Зарегистрируйтесь' : 'Войти' }}
-          </b>
-        </span>
+
+        <!--        <span class="flex jc-center ai-center gap-4 subtitle-4 text-color">-->
+        <!--          {{ isLogin ? 'Нет аккаунта ?' : 'Уже есть аккаунт ?' }}-->
+        <!--          <b class="subtitle-3 title-color pointer" (click)="setIsLogin()">-->
+        <!--            {{ isLogin ? 'Зарегистрируйтесь' : 'Войти' }}-->
+        <!--          </b>-->
+        <!--        </span>-->
       </div>
       <img
         [src]="isLogin ? 'img/login.jpeg' : 'img/register2.png'"

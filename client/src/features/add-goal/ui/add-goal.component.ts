@@ -10,7 +10,7 @@ import { GoalHandlerService } from '../../../entities/goal/model/services/goal-h
   selector: 'app-add-goal',
   template: `
     <div
-      class="p-16 border-radius-2 pointer wp-200 hp-180 flex ai-center jc-center border-radius-8 gap-8 bg-stroke"
+      class="p-16 border-radius-2 pointer wp-300 hp-142 flex ai-center jc-center border-radius-8 gap-8 bg-stroke"
       (click)="addGoal()">
       <img src="/img/add.svg" alt="icon" class="h-48 w-48" />
     </div>
