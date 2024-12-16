@@ -1,9 +1,10 @@
 <section>
   <app-table
+    withActions
     [columns]="tableColumns"
     [strapiData]="records()"
     [addNewEntityColspan]="6"
-    (rowClicked)="navigateToDetailPage($event)"
     (addNewEntity)="addNewRecord()"
+    (editClick)="editRecord($event)"
   ></app-table>
 </section>
