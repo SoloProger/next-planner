@@ -15,7 +15,7 @@ import { EntityDataModel } from '../../../../shared/model/types/EntityDataModel'
           [invoiceType]="invoice.attributes.invoiceType"
           [name]="invoice.attributes.name"
           [currency]="invoice.attributes.currency"
-          (enterEdit)="enterEdit()"></app-invoice-card>
+          (onRemove)="removeInvoice(invoice.id)"></app-invoice-card>
       }
       <ng-content></ng-content>
     </section>
@@ -25,13 +25,17 @@ export class InvoiceGridComponent implements OnInit {
   public invoices: BehaviorSubject<EntityDataModel<Invoice>[]> =
     new BehaviorSubject<EntityDataModel<Invoice>[]>([]);
 
-  public enterEdit() {}
-
   constructor(private apiService: BaseStrapiApiService<Invoice, Invoice>) {}
 
   ngOnInit() {
     this.apiService.getAll('invoices').subscribe(invoices => {
       this.invoices.next(invoices.data);
     });
+  }
+
+  public removeInvoice(id?: number): void {
+    if (id) {
+      this.apiService.delete('invoice', id).subscribe();
+    }
   }
 }

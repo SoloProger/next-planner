@@ -1,4 +1,4 @@
-import { Component, input, Input, output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { currencySymbols } from '../../constants/currencySymbols';
 import { backgrounds } from '../../constants/cardBackgrounds';
 
@@ -8,18 +8,16 @@ import { backgrounds } from '../../constants/cardBackgrounds';
     <div
       class="p-16 border-radius-2 wp-200 hp-150 flex-col border-radius-8 gap-8"
       [ngClass]="backgrounds[invoiceType()]">
-      <div class="flex gap-50">
+      <div class="flex ai-center jc-space">
         <h3 class="caption-3">№{{ invoiceNumber() }}</h3>
-        <div>
-          <img src="img/editer.svg" alt="" (click)="enterEdit.emit()" />
-        </div>
+        <img src="img/remove.svg" alt="remove" class="wp-10 hp-10 pointer" (click)="onRemove.emit()" />
       </div>
       <h2 class="subtitle-2">{{ name() | slice: 0 : 10 }}...</h2>
       <div class="caption-2">
         Текущий баланс:
-        <span class="headline"
-          >{{ invoiceCount() }}{{ currencySymbols[currency()] }}</span
-        >
+        <span class="headline">
+          {{ invoiceCount() }}{{ currencySymbols[currency()] }}
+        </span>
       </div>
     </div>
   `,
@@ -35,7 +33,7 @@ export class InvoiceCardComponent {
 
   public invoiceType = input.required<string>();
 
-  public enterEdit = output();
+  public onRemove = output();
 
   protected readonly currencySymbols: Record<string, string> = currencySymbols;
   protected readonly backgrounds: Record<string, string> = backgrounds;
