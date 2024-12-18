@@ -8,7 +8,7 @@ export function databaseConfig(configService: ConfigService) {
     username: configService.get('DB_USER'),
     password: configService.get('DB_PASSWORD'),
     database: configService.get('DB_NAME'),
-    synchronize: false,
+    synchronize: true,
     logging: false,
     entities: [__dirname + '/../database/entities/**/*{.ts,.js}'],
     migrations: [__dirname + '/../database/migrations/**/*{.ts,.js}'],
