@@ -8,6 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import {
+  ApiBearerAuth,
   ApiCreatedResponse,
   ApiParam,
   ApiResponse,
@@ -21,6 +22,7 @@ import { InvoiceResponseDTO } from './dto/InvoiceResponse';
 
 @ApiTags('Invoice')
 @Controller('invoice')
+@ApiBearerAuth()
 export class InvoiceController {
   constructor(
     @InjectRepository(Invoice) private repository: Repository<Invoice>,

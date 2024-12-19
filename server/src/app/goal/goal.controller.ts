@@ -8,6 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import {
+  ApiBearerAuth,
   ApiCreatedResponse,
   ApiParam,
   ApiResponse,
@@ -21,6 +22,7 @@ import { GoalResponseDTO } from './dto/GoalResponse';
 
 @ApiTags('Goal')
 @Controller('goal')
+@ApiBearerAuth()
 export class GoalController {
   constructor(@InjectRepository(Goal) private repository: Repository<Goal>) {}
 
