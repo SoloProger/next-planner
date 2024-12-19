@@ -16,10 +16,10 @@ import { GoalFormComponent } from '../goal-form/goal-form.component';
     <section class="flex ai-center wi-100 gap-24 wrap">
       @for (goal of goals(); track goal.id) {
         <app-goal-card
-          [name]="goal.attributes.name"
-          [description]="goal.attributes.description"
-          [totalAmount]="goal.attributes.totalAmount"
-          [currentAmount]="goal.attributes.currentAmount"
+          [name]="goal.name"
+          [description]="goal.description"
+          [totalAmount]="goal.totalAmount"
+          [currentAmount]="goal.currentAmount"
           (edit)="editGoal($event, goal.id)"></app-goal-card>
       }
       <ng-content></ng-content>
@@ -45,7 +45,7 @@ export class GoalGridComponent implements OnInit {
         isEditing: true,
       })
       .afterClosed.subscribe(formData => {
-        this.handler.updateGoal(formData.id, { data: formData.formData });
+        this.handler.updateGoal(formData.id, formData.formData);
       });
   }
 }

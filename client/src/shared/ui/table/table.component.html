@@ -25,7 +25,21 @@
           }
         </tr>
       }
-
+    } @else {
+      @for (item of data(); track item) {
+        <tr class="table-hover" (click)="rowClicked.emit(item)">
+          @for (column of columns(); track column) {
+            <td class="caption-2">
+              {{ item[column.columnField] || "-" }}
+            </td>
+          }
+          @if (withActions()) {
+            <td class="text-center">
+              <img src="/img/editer.svg" alt="edit" class="pointer hp-20 wp-20" (click)="editClick.emit(item)" />
+            </td>
+          }
+        </tr>
+      }
     }
   <tr>
     <td [attr.colspan]="withActions() ? columns().length + 1 : columns().length"

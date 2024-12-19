@@ -1,5 +1,5 @@
 export const backgrounds = {
-  MAIN: 'bg-main-card',
-  SAVINGS: 'bg-saving-card',
-  INVEST: 'bg-invest-card',
+  Основной: 'bg-main-card',
+  Накопительный: 'bg-saving-card',
+  Инвестиционный: 'bg-invest-card',
 };

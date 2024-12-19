@@ -8,16 +8,16 @@ import { EntityDataModel } from '../../model/types/EntityDataModel';
   styleUrl: 'table.component.scss',
   standalone: true,
 })
-export class TableComponent<T> {
+export class TableComponent {
   public columns = input.required<TableColumn[]>();
   public addNewEntityColspan = input<number>();
-  public data = input<T>();
+  public data = input<any[]>();
   public strapiData = input<EntityDataModel<any>[] | null>();
   public withActions = input(false, {
     transform: booleanAttribute,
   });
 
-  public rowClicked = output<EntityDataModel<any>>();
+  public rowClicked = output<any>();
   public addNewEntity = output<void>();
-  public editClick = output<EntityDataModel<any>>();
+  public editClick = output<any>();
 }

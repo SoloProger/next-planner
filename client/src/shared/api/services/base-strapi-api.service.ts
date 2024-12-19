@@ -1,15 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ApiService } from '../../model/types/ApiService';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { EntitiesDataModel } from '../../model/types/EntitiesDataModel';
 import { EntityDataModel } from '../../model/types/EntityDataModel';
 
 @Injectable({ providedIn: 'root' })
-export class BaseStrapiApiService<T, Y>
-  implements ApiService<EntitiesDataModel<T> | EntityDataModel<T>, Y>
-{
+export class BaseStrapiApiService<T, Y> {
   constructor(protected http: HttpClient) {}
 
   public getAll(endpoint: string): Observable<EntitiesDataModel<T>> {

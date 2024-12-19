@@ -11,7 +11,7 @@ export class AuthService {
 
   public login(loginForm: AuthRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(
-      `${environment.apiUrl}/auth/local`,
+      `${environment.apiUrl}/auth/login`,
       loginForm
     );
   }

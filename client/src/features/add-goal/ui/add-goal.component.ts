@@ -30,7 +30,7 @@ export class AddGoalComponent {
         title: 'Добавить цель',
       })
       .afterClosed.subscribe(formData => {
-        this.handler.addGoal({ data: formData });
+        this.handler.addGoal(formData);
       });
   }
 }

@@ -17,18 +17,19 @@ export class LoginFormComponent {
   private router = inject(Router);
 
   public loginForm = this.form.group({
-    login: ['', Validators.required],
+    email: ['', Validators.required],
     password: ['', Validators.required],
   });
 
   public enterAuth() {
     this.auth
       .login({
-        identifier: this.loginForm.get('login')?.value as string,
+        email: this.loginForm.get('email')?.value as string,
         password: this.loginForm.get('password')?.value as string,
       })
       .subscribe(res => {
-        this.localStorage.setItem('token', res.jwt);
+        console.log(res);
+        this.localStorage.setItem('token', res.token);
         this.router.navigate(['/']);
       });
   }

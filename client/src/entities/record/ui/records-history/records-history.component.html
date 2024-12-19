@@ -2,7 +2,7 @@
   <app-table
     withActions
     [columns]="tableColumns"
-    [strapiData]="records()"
+    [data]="records()"
     [addNewEntityColspan]="6"
     (addNewEntity)="addNewRecord()"
     (editClick)="editRecord($event)"

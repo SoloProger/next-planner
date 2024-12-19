@@ -12,7 +12,6 @@ import { NgIf } from '@angular/common';
         } @else {
           <!--          <app-registration-form></app-registration-form>-->
         }
-
         <!--        <span class="flex jc-center ai-center gap-4 subtitle-4 text-color">-->
         <!--          {{ isLogin ? 'Нет аккаунта ?' : 'Уже есть аккаунт ?' }}-->
         <!--          <b class="subtitle-3 title-color pointer" (click)="setIsLogin()">-->
