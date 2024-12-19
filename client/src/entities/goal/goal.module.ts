@@ -9,9 +9,8 @@ import { InputComponent } from '../../shared/ui/input/input.component';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
 import { GoalStateService } from './model/services/goal-state.service';
 import { GoalHandlerService } from './model/services/goal-handler.service';
-import { BaseApiService } from '../../shared/api/services/base-api.service';
-import { BaseStrapiApiService } from '../../shared/api/services/base-strapi-api.service';
 import { BaseStateService } from '../../shared/model/services/base-state.service';
+import { BaseApiService } from '../../shared/api/services/base-api.service';
 
 @NgModule({
   imports: [
@@ -27,7 +26,7 @@ import { BaseStateService } from '../../shared/model/services/base-state.service
     GoalStateService,
     GoalHandlerService,
     BaseStateService,
-    { provide: BaseApiService, useClass: BaseStrapiApiService },
+    BaseApiService,
   ],
 })
 export class GoalModule {}

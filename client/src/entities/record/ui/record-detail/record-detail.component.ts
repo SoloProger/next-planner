@@ -1,21 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { EntityDataModel } from '../../../../shared/model/types/EntityDataModel';
 import { Record } from '../../model/types/Record';
-import { BaseStrapiApiService } from '../../../../shared/api/services/base-strapi-api.service';
 import { ActivatedRoute } from '@angular/router';
+import { BaseApiService } from '../../../../shared/api/services/base-api.service';
 
 @Component({
   selector: 'app-record-detail',
   templateUrl: 'record-detail.component.html',
 })
 export class RecordDetailComponent implements OnInit {
-  public record$: BehaviorSubject<EntityDataModel<Record> | null> =
-    new BehaviorSubject<EntityDataModel<Record> | null>(null);
+  public record$: BehaviorSubject<Record | null> =
+    new BehaviorSubject<Record | null>(null);
 
   constructor(
     private route: ActivatedRoute,
-    private apiService: BaseStrapiApiService<Record, Record>
+    private apiService: BaseApiService<Record, Record>
   ) {}
 
   ngOnInit() {
