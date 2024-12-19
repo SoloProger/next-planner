@@ -12,6 +12,7 @@ const config = new DocumentBuilder()
   .setTitle(_config.title)
   .setDescription(_config.description)
   .setVersion(_config.version)
+  .addBearerAuth()
   .build();
 
 export const swagger = (app: INestApplication<any>) => {

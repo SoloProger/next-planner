@@ -8,6 +8,7 @@ import {
   Put,
 } from '@nestjs/common';
 import {
+  ApiBearerAuth,
   ApiCreatedResponse,
   ApiParam,
   ApiResponse,
@@ -22,6 +23,7 @@ import { CategoryResponseDTO } from './dto/CategoryResponse';
 
 @ApiTags('Category')
 @Controller('category')
+@ApiBearerAuth()
 export class CategoryController {
   constructor(
     @InjectRepository(Category) private repository: Repository<Category>,
