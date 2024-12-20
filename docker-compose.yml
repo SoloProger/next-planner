@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  frontend:
+    container_name: client
+    restart: on-failure
+    ports:
+      - "4200:4200"
+    build:
+      context: ./client
+      target: dev
+      dockerfile: Dockerfile
+
+  db:
+    container_name: db
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=planner
+    ports:
+      - '5432:5432'
+
+  backend:
+    container_name: server
+    restart: on-failure
+    build:
+      context: ./server
+      target: dev
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./server/src:/app/src
+    depends_on:
+      - db
+
+
+
+
