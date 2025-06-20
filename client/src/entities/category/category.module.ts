@@ -7,6 +7,7 @@ import { CategoryFormComponent } from './ui/category-form/category-form.componen
 import { ReactiveFormsModule } from '@angular/forms';
 import { InputComponent } from '../../shared/ui/input/input.component';
 import { ButtonComponent } from '../../shared/ui/button/button.component';
+import { ChangeBtnTitleDirective } from '../../shared/lib/directives/change-btn-title.directive';
 
 @NgModule({
   imports: [
@@ -15,6 +16,7 @@ import { ButtonComponent } from '../../shared/ui/button/button.component';
     ReactiveFormsModule,
     InputComponent,
     ButtonComponent,
+    ChangeBtnTitleDirective,
   ],
   exports: [CategoryTableComponent],
   declarations: [CategoryTableComponent, CategoryFormComponent],

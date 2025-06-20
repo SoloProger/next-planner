@@ -7,40 +7,37 @@ import {
 } from '@angular/core';
 import { tableColumns } from '../../constants/tableColumns';
 import { EntityDataModel } from '../../../../shared/model/types/EntityDataModel';
-import { BaseStrapiApiService } from '../../../../shared/api/services/base-strapi-api.service';
 import { Category } from '../../model/types/Category';
 import { DialogService } from '../../../../shared/ui/dialog/services/dialog.service';
 import { CategoryFormComponent } from '../category-form/category-form.component';
 import { switchMap } from 'rxjs';
+import { ApiService } from '../../../../shared/model/types/ApiService';
+import { BaseApiService } from '../../../../shared/api/services/base-api.service';
 
 @Component({
   selector: 'app-category-table',
   template: `
     <app-table
+      withActions
       [columns]="tableColumns"
-      [addNewEntityColspan]="2"
-      [strapiData]="categories()"
-      (addNewEntity)="addNewCategory()">
+      [data]="categories()"
+      (addNewEntity)="addNewCategory()"
+      (editClick)="editCategory($event)">
     </app-table>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CategoryTableComponent implements OnInit {
   protected readonly tableColumns = tableColumns;
-  private api: BaseStrapiApiService<Category, { data: Category }> =
-    inject(BaseStrapiApiService);
+  private api: ApiService<Category, Category> = inject(BaseApiService);
   private dialog = inject(DialogService);
 
-  public categories = signal<EntityDataModel<Category>[]>([]);
+  public categories = signal<Category[]>([]);
 
   ngOnInit() {
     this.api
-      .getAll('categories')
-      .subscribe(categories =>
-        this.categories.set(
-          categories.data as unknown as EntityDataModel<Category>[]
-        )
-      );
+      .getAll('category')
+      .subscribe(categories => this.categories.set(categories));
   }
 
   public addNewCategory(): void {
@@ -49,15 +46,27 @@ export class CategoryTableComponent implements OnInit {
         title: 'Добавить категорию',
       })
       .afterClosed.pipe(
-        switchMap((formData: Category) =>
-          this.api.post('categories', { data: formData })
+        switchMap((formData: Category) => this.api.post('category', formData))
+      )
+      .subscribe(category => {
+        this.categories.update(categories => [...categories, category]);
+      });
+  }
+
+  public editCategory(category: EntityDataModel<Category> | null): void {
+    this.dialog
+      .openDialog(CategoryFormComponent, {
+        title: 'Изменить категорию',
+        data: { ...category, id: category?.id },
+        isEditing: true,
+      })
+      .afterClosed.pipe(
+        switchMap(formData =>
+          this.api.put('category', formData.id, formData.formData)
         )
       )
       .subscribe(category => {
-        const _category = category as unknown as {
-          data: EntityDataModel<Category>;
-        };
-        this.categories.update(categories => [...categories, _category.data]);
+        this.categories.update(categories => [...categories, category]);
       });
   }
 }

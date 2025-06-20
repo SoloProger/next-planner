@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Injectable({ providedIn: 'root' })
 export class CustomFormBuilder extends FormBuilder {
-  public validation(controlName: string, form: FormGroup): any {
+  public validation(controlName: string, form: FormGroup): unknown {
     return {
       invalid:
         form.get(controlName)?.invalid &&

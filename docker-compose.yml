@@ -1,68 +1,41 @@
-version: "3.8"
+version: '3.8'
+
 services:
-
   frontend:
-    container_name: frontend
-    build:
-      context: frontend
-      dockerfile: Dockerfile
-    networks:
-      - strapi
-    volumes:
-      - ./frontend/src:/app/src
+    container_name: client
+    restart: on-failure
     ports:
-      - 5173:5173
-    depends_on:
-      - strapi
-
-  strapi:
-    container_name: strapi
+      - "4200:4200"
     build:
-      context: admin
-      dockerfile: Dockerfile
+      context: ./client
+      target: dev
+      dockerfile: Dockerfile-dev
+
+  db:
+    container_name: db
+    image: postgres:15
     restart: always
     environment:
-      DATABASE_CLIENT: ${DATABASE_CLIENT}
-      DATABASE_HOST: strapiDB
-      DATABASE_PORT: ${DATABASE_PORT}
-      DATABASE_NAME: ${DATABASE_NAME}
-      DATABASE_USERNAME: ${DATABASE_USERNAME}
-      DATABASE_PASSWORD: ${DATABASE_PASSWORD}
-      JWT_SECRET: ${JWT_SECRET}
-      ADMIN_JWT_SECRET: ${ADMIN_JWT_SECRET}
-      APP_KEYS: ${APP_KEYS}
-      NODE_ENV: ${NODE_ENV}
-    volumes:
-      - ./admin/config:/opt/app/config
-      - ./admin/src:/opt/app/src
-      - ./admin/package.json:/opt/package.json
-      - ./admin/yarn.lock:/opt/yarn.lock
-      - ./admin/.env:/opt/app/.env
-      - ./admin/public/uploads:/opt/app/public/uploads
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
     ports:
-      - "1337:1337"
-    networks:
-      - strapi
+      - '5432:5432'
+
+  backend:
+    container_name: server
+    restart: on-failure
+    build:
+      context: ./server
+      target: dev
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./server/src:/app/src
     depends_on:
-      - strapiDB
+      - db
 
-  strapiDB:
-    container_name: strapiDB
-    restart: always
-    image: postgres:12.0-alpine
-    environment:
-      POSTGRES_USER: ${DATABASE_USERNAME}
-      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
-      POSTGRES_DB: ${DATABASE_NAME}
-    volumes:
-      - ./db-dev:/var/lib/postgresql/data/
 
-    ports:
-      - "5433:5432"
-    networks:
-      - strapi
 
-networks:
-  strapi:
-    name: Strapi
-    driver: bridge
+

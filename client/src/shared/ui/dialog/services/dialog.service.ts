@@ -13,8 +13,8 @@ import { DialogRef } from '../lib/utils/dialog-ref';
 import { DialogComponent } from '../ui/dialog.component';
 
 @Injectable()
-export class DialogService {
-  private componentRef!: ComponentRef<DialogComponent>;
+export class DialogService<T = any> {
+  private componentRef!: ComponentRef<DialogComponent<T>>;
 
   constructor(
     private appRef: ApplicationRef,
@@ -27,6 +27,7 @@ export class DialogService {
     this.componentRef.instance.childComponentType = componentType;
 
     this.componentRef.instance.title = config.title;
+    this.componentRef.instance.data = config.data;
 
     return dialogRef;
   }
@@ -45,7 +46,7 @@ export class DialogService {
       subscription.unsubscribe();
     });
 
-    const componentRef = createComponent(DialogComponent, {
+    const componentRef = createComponent(DialogComponent<T>, {
       environmentInjector: this.appRef.injector,
       elementInjector: new DialogInjector(this.injector, map),
     });

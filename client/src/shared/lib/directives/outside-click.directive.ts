@@ -19,7 +19,7 @@ export class OutsideClickDirective implements OnInit, OnDestroy {
 
   constructor(
     private renderer: Renderer2,
-    private element: ElementRef,
+    private element: ElementRef
   ) {}
 
   private listener?: () => void;
@@ -37,7 +37,7 @@ export class OutsideClickDirective implements OnInit, OnDestroy {
     this.listener = this.renderer.listen(
       'document',
       'click',
-      this.documentClick,
+      this.documentClick
     );
   }
 

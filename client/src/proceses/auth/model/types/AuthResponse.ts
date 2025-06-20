@@ -1,4 +1,6 @@
+import { User } from '../../../../entities/user/model/types/User';
+
 export interface AuthResponse {
-  jwt: string;
-  user: unknown;
+  token: string;
+  user: User;
 }

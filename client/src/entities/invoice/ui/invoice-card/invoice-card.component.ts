@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { currencySymbols } from '../../constants/currencySymbols';
 import { backgrounds } from '../../constants/cardBackgrounds';
 
@@ -7,29 +7,30 @@ import { backgrounds } from '../../constants/cardBackgrounds';
   template: `
     <div
       class="p-16 border-radius-2 wp-200 hp-150 flex-col border-radius-8 gap-8"
-      [ngClass]="backgrounds[invoiceType]"
-    >
-      <h3 class="caption-3">№{{ invoiceNumber }}</h3>
-      <h2 class="subtitle-2">{{ name | slice: 0 : 10 }}...</h2>
+      [ngClass]="backgrounds[invoiceType()]">
+      <div class="flex gap-50">
+        <h3 class="caption-3">№{{ invoiceNumber() }}</h3>
+      </div>
+      <h2 class="subtitle-2">{{ name() | slice: 0 : 10 }}...</h2>
       <div class="caption-2">
         Текущий баланс:
         <span class="headline"
-        >{{ invoiceCount }}{{ currencySymbols[currency] }}</span
+          >{{ invoiceCount() }}{{ currencySymbols[currency()] }}</span
         >
       </div>
     </div>
   `,
 })
 export class InvoiceCardComponent {
-  @Input({ required: true }) invoiceNumber!: number;
+  public invoiceNumber = input.required<number>();
 
-  @Input({ required: true }) invoiceCount!: number;
+  public invoiceCount = input.required<number>();
 
-  @Input({ required: true }) currency!: string;
+  public currency = input.required<string>();
 
-  @Input({ required: true }) name!: string;
+  public name = input.required<string>();
 
-  @Input({ required: true }) invoiceType!: string;
+  public invoiceType = input.required<string>();
 
   protected readonly currencySymbols: Record<string, string> = currencySymbols;
   protected readonly backgrounds: Record<string, string> = backgrounds;

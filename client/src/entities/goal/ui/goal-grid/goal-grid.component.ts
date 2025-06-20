@@ -1,34 +1,51 @@
-import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { EntityDataModel } from '../../../../shared/model/types/EntityDataModel';
-import { BaseStrapiApiService } from '../../../../shared/api/services/base-strapi-api.service';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+  OnInit,
+} from '@angular/core';
+import { GoalHandlerService } from '../../model/services/goal-handler.service';
 import { Goal } from '../../model/types/Goal';
+import { DialogService } from '../../../../shared/ui/dialog/services/dialog.service';
+import { GoalFormComponent } from '../goal-form/goal-form.component';
 
 @Component({
   selector: 'app-goal-grid',
   template: `
-    <section class="flex ai-center wi-100 gap-24">
-      @for (goal of goals$ | async; track goal.id) {
+    <section class="flex ai-center wi-100 gap-24 wrap">
+      @for (goal of goals(); track goal.id) {
         <app-goal-card
-          [name]="goal.attributes.name"
-          [description]="goal.attributes.description"
-          [totalAmount]="goal.attributes.totalAmount"
-          [currentAmount]="goal.attributes.currentAmount"></app-goal-card>
+          [name]="goal.name"
+          [description]="goal.description"
+          [totalAmount]="goal.totalAmount"
+          [currentAmount]="goal.currentAmount"
+          (edit)="editGoal($event, goal.id)"></app-goal-card>
       }
       <ng-content></ng-content>
     </section>
   `,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GoalGridComponent implements OnInit {
-  public goals$: BehaviorSubject<EntityDataModel<Goal>[]> = new BehaviorSubject<
-    EntityDataModel<Goal>[]
-  >([]);
+  public handler = inject(GoalHandlerService);
+  public dialog = inject(DialogService);
 
-  constructor(private apiService: BaseStrapiApiService<Goal, Goal>) {}
+  public goals = computed(() => this.handler.state.entities());
 
   ngOnInit() {
-    this.apiService.getAll('goals').subscribe(goals => {
-      this.goals$.next(goals.data);
-    });
+    this.handler.getGoals();
+  }
+
+  public editGoal(goal: Goal | null, id?: number): void {
+    this.dialog
+      .openDialog(GoalFormComponent, {
+        title: 'Изменить цель',
+        data: { ...goal, id },
+        isEditing: true,
+      })
+      .afterClosed.subscribe(formData => {
+        this.handler.updateGoal(formData.id, formData.formData);
+      });
   }
 }

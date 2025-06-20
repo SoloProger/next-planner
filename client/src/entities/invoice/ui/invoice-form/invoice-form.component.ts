@@ -1,14 +1,11 @@
 import { Component, inject } from '@angular/core';
-import {
-  Currency,
-  CurrencyEnumType,
-} from '../../../../shared/model/enums/Currency';
-import { InvoiceType, InvoiceTypeEnum } from '../../model/types/InvoiceType';
+import { Currency } from '../../../../shared/model/enums/Currency';
+import { InvoiceType } from '../../model/types/InvoiceType';
 import { FormGroup, Validators } from '@angular/forms';
 import invoiceNumGen from '../../lib/utils/invoiceNumGen';
 import { Option } from '../../../../shared/ui/select/model/types/option';
 import { CustomFormBuilder } from '../../../../shared/lib/services/custom-form-builder.service';
-import { BaseStrapiApiService } from '../../../../shared/api/services/base-strapi-api.service';
+import { BaseApiService } from '../../../../shared/api/services/base-api.service';
 
 @Component({
   selector: 'app-invoice-form',
@@ -16,21 +13,18 @@ import { BaseStrapiApiService } from '../../../../shared/api/services/base-strap
 })
 export class InvoiceFormComponent {
   public fb = inject(CustomFormBuilder);
-  private api = inject(BaseStrapiApiService);
+  private api = inject(BaseApiService);
 
   public currencies: Option[] = [
-    {
-      name: Currency.RUBLE,
-      value: CurrencyEnumType.RUBLE,
-    },
-    { name: Currency.EURO, value: CurrencyEnumType.EURO },
-    { name: Currency.DOLLAR, value: CurrencyEnumType.DOLLAR },
+    { name: Currency.RUBLE, value: Currency.RUBLE },
+    { name: Currency.EURO, value: Currency.EURO },
+    { name: Currency.DOLLAR, value: Currency.DOLLAR },
   ];
 
   public invoiceTypes: Option[] = [
-    { name: InvoiceType.MAIN, value: InvoiceTypeEnum.MAIN },
-    { name: InvoiceType.INVEST, value: InvoiceTypeEnum.INVEST },
-    { name: InvoiceType.SAVINGS, value: InvoiceTypeEnum.SAVINGS },
+    { name: InvoiceType.MAIN, value: InvoiceType.MAIN },
+    { name: InvoiceType.INVEST, value: InvoiceType.INVEST },
+    { name: InvoiceType.SAVINGS, value: InvoiceType.SAVINGS },
   ];
 
   public formGroup: FormGroup = this.fb.group({
@@ -42,6 +36,6 @@ export class InvoiceFormComponent {
   });
 
   public onSubmit() {
-    this.api.post('invoices', { data: this.formGroup.value }).subscribe();
+    this.api.post('invoice', this.formGroup.value).subscribe();
   }
 }

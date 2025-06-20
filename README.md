@@ -3,21 +3,16 @@
 **Planner** - платформа для управление личными финансами.
 
 ## Стек
-
-- Admin
-    - JavaScript
-    - Strapi
-    - SQLite
-- Backend **(in dev)**
+- Backend
     - TypeScript
     - Nest.js
     - TypeORM
-    - PostgresSQL
+    - PostgreSQL
     - Docker
 - Frontend
     - TypeScript
     - Angular 18
-    - RxJS
+    - Signal API
 
 ## Требования
 
@@ -41,8 +36,8 @@ $ git clone https://github.com/SoloProger/next-planner.git
 # Устанавливаем зависимости frontend
 $ cd client && npm install
 
-# Устанавливаем зависимости admin
-$ cd admin && npm install
+# Устанавливаем зависимости backend
+$ cd server && npm install
 ```
 
 ## Запуск
@@ -53,6 +48,6 @@ $ cd admin && npm install
 # Запуск frontend
 $ cd client && npm run start
 
-# Запуск админ панели
-$ cd admin && npm run develop
+# Запуск backend
+$ cd server && npm run develop
 ```
